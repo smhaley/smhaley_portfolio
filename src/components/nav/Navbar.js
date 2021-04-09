@@ -1,25 +1,25 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Burger from "./Burger";
-import { useOnClickOutside } from "../hooks";
+import { useOnClickOutside, useSideNavMediaClose } from "../hooks";
 import Menu from "./Menu";
-import {Nav, NavLink, NavBtn, NavMenu} from "./styled/Navbar.styled";
+import {Nav, NavLink, NavBtn, NavMenu, NavLogo} from "./styled/Navbar.styled";
+
 
 
 const Navbar = () => {
   const node = useRef();
 
   const [open, setOpen] = useState(false);
-  useOnClickOutside(node, () => {
-    setOpen(false)
-  
-  });
+
+  useOnClickOutside(node, () => setOpen(false));
+  useSideNavMediaClose( "768px", ()=>setOpen(false)) 
 
   return (
     <>    
       <Nav>
-        <NavLink>
+        <NavLogo>
           <h1>sh</h1>
-        </NavLink>
+        </NavLogo>
         <div ref={node}>
         <Burger open={open} setOpen={setOpen} />
         <Menu  open={open} setOpen={setOpen}/>
@@ -28,7 +28,6 @@ const Navbar = () => {
           <NavLink activeStyle>About</NavLink>
           <NavLink activeStyle>Work</NavLink>
           <NavLink activeStyle>Experience</NavLink>
-          <NavLink activeStyle>Contact</NavLink>
           <NavBtn>Contact</NavBtn>
         </NavMenu>
       </Nav>

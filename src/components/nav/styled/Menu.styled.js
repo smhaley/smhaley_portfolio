@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import {respondTo} from '../../../styles/mixins'
+import styled from "styled-components";
+import { respondTo } from "../../../styles/mixins";
 
 export const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background:${props => props.theme.green};
+  background: ${(props) => props.theme.green};
   height: 100vh;
   text-align: right;
   padding: 2rem;
@@ -13,8 +13,13 @@ export const StyledMenu = styled.nav`
   top: 0;
   right: 0;
   transition: transform 0.3s ease-in-out;
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+ 
+  ${respondTo.sm`
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(100%);
 
+    `}
   a {
     font-size: 2rem;
     text-transform: uppercase;
@@ -24,11 +29,8 @@ export const StyledMenu = styled.nav`
     color: green;
     text-decoration: none;
     transition: color 0.3s linear;
-    
-    ${respondTo.sm`
-      font-size: 1.5rem;
-      text-align: center;
-    `}
+
+
 
     &:hover {
       color: blue;
