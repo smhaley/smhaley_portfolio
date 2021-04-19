@@ -22,7 +22,6 @@ export const useSideNavMediaClose = (position, handler) => {
 
       const listener = (x) => {
         if (x.matches) {
-          console.log('FIRE')
           handler();
         } else {
           return;

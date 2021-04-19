@@ -1,91 +1,97 @@
-import styled from 'styled-components';
-import {respondTo} from '../../../styles/mixins'
+import styled, { css } from "styled-components";
+import {Button} from '../../../styles/common/Buttons'
+
 
 export const Nav = styled.nav`
-background: #000;
-height: 70px;
-display: flex;
-justify-content: space-between;
-/* padding: 0.5rem calc((100vw - 1000px) / 2); */
-z-index: 10;
+  background: #000;
+  height: 80px;
+  display: flex;
+  top:0;
+  justify-content: space-between;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  transition: 0.4s ease-in-out;
+  ${(props) =>
+    props.scroll === "up" &&
+    css`
+      height: var(--nav-scroll-height);
+      transform: translateY(0px);
+      background-color: rgba(10, 25, 47, 0.85);
+      box-shadow: 0 10px 30px -10px var(--navy-shadow);
+    `}
+  ${(props) =>
+    props.scroll === "down" &&
+    css`
+      height: var(--nav-scroll-height);
+      transform: translateY(calc(var(--nav-scroll-height) * -1));
+      box-shadow: 0 10px 30px -10px var(--navy-shadow);
+    `}
 `;
 
-
-export const NavLink = styled.nav`
-color: #fff;
-display: flex;
-align-items: center;
-text-decoration: none;
-padding: 0 1rem;
-height: 100%;
-cursor: pointer;
-font-size: .9em;
-&:hover {
-  color: green;
-}
-&:active {
-  color: yellow;
-}
-transition: 0.3s ease-in-out;
+export const NavLink = styled.li`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  font-size: 0.9em;
+  &:hover {
+    color: green;
+  }
+  &:active {
+    color: yellow;
+  }
+  transition: 0.3s ease-in-out;
 `;
 
-export const NavMenu = styled.div`
-/* padding: 0.5rem calc((100vw - 1000px) / 2) */
-display: none;
+export const NavMenu = styled.ul`
+  /* padding: 0.5rem calc((100vw - 1000px) / 2) */
+  display: none;
 
-@media screen and (min-width: 768px) {
+  @media screen and (min-width: ${(props) => props.theme.sm}) {
     align-items: center;
     display: flex;
-}
-@media screen and (min-width: 1200px) {
-  margin-right: 3rem;
-  transition: 0.2s ease-in-out;
-}
+    transition: 0.2s ease-in-out;
+  }
+  @media screen and (min-width: ${(props) => props.theme.lg}) {
+    margin-right: 3rem;
+    transition: 0.2s ease-in-out;
+  }
 `;
 
 export const NavLogo = styled.div`
-color: #fff;
-display: flex;
-align-items: center;
-text-decoration: none;
-/* padding: 0 3rem; */
-padding-left:2rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  /* padding: 0 3rem; */
+  padding-left: 2rem;
 
-height: 100%;
-cursor: pointer;
-font-size: .9em;
-&:hover {
-  color: green;
-}
-&:active {
-  color: yellow;
-}
-transition: 0.3s ease-in-out;
+  height: 100%;
+  cursor: pointer;
+  font-size: 0.9em;
+  &:hover {
+    color: green;
+  }
+  &:active {
+    color: yellow;
+  }
+  transition: 0.3s ease-in-out;
 
+  @media screen and (min-width: ${(props) => props.theme.sm}) {
+    margin-left: 4rem;
+  }
+  @media screen and (min-width: ${(props) => props.theme.lg}) {
+    margin-left: 6rem;
+  }
+`;
 
-@media screen and (min-width: 768px) {
-    margin-left:4rem;
-}
-@media screen and (min-width: 1200px) {
-    margin-left:6rem;
-}
-`
+export const NavBtn = styled(Button)`
 
+  margin: 2em;
 
-export const NavBtn = styled.nav`
-display: flex;
-align-items: center;
-/* margin-right: 200px; */
-background: #121136;
-color: rgb(24, 236, 151);
-font-size: 1em;
-margin: 2em;
-padding: 0.4em .8em;
-border: 1px solid rgb(24, 236, 151);
-border-radius: 3px;
-transition: 0.2s ease-in-out;
-&:hover {
-  background-color: rgb(24, 236, 151, 0.1);
-  // color: white;
-}
+  
 `;

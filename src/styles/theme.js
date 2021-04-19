@@ -12,4 +12,13 @@ export const theme = {
   pink: 'palevioletred',
   white: '#e6f1ff',
   grey: '#dadee8',
+  xs: '480px',
+  sm: '768px',
+  md: '992px',
+  lg: '1200px',
+  light: '#ebf4f6',
+  blue: '#bdeaee',
+  teal: '#76b4bd',
+  navy:'#58668b',
+  grey:'#5e5656',
   }
