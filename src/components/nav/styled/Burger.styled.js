@@ -18,8 +18,8 @@ export const StyledBurger = styled.button`
   margin-right: 1rem;
 
   @media screen and (min-width: 768px) {
-  display: none;
-}
+    display: none;
+  }
 
   &:focus {
     outline: none;
@@ -28,7 +28,7 @@ export const StyledBurger = styled.button`
   div {
     width: 2rem;
     height: 0.25rem;
-    background: white;
+    background: ${(props) => props.theme.white};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;

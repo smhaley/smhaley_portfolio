@@ -1,28 +1,27 @@
-import React from 'react';
-import { StyledMenu } from './styled/Menu.styled';
-import { bool } from 'prop-types';
+import React, { useLayoutEffect } from "react";
+import { StyledMenu } from "./styled/Menu.styled";
+import { bool } from "prop-types";
 
-const Menu = ({open}) => {
+const Menu = ({ open }) => {
+  useLayoutEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [open]);
+
   return (
     <StyledMenu open={open}>
-      <a href="/">
-        <span role="img" aria-label="about us">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
-        About us
-      </a>
-      <a href="/">
-        <span role="img" aria-label="price">&#x1f4b8;</span>
-        Pricing
-        </a>
-      <a href="/">
-        <span role="img" aria-label="contact">&#x1f4e9;</span>
-        Contact
-        </a>
+      <a href="/">About</a>
+      <a href="/">Work</a>
+      <a href="/">Contact</a>
     </StyledMenu>
-  )
-}
+  );
+};
 
 Menu.propTypes = {
-    open: bool.isRequired,
-  }
-  
+  open: bool.isRequired,
+};
+
 export default Menu;

@@ -1,12 +1,11 @@
 import styled, { css } from "styled-components";
-import {Button} from '../../../styles/common/Buttons'
-
+import { Button } from "../../../styles/common/Buttons";
 
 export const Nav = styled.nav`
-  background: #000;
+  background: ${(props) => props.theme.veryDarkTrans};
   height: 80px;
   display: flex;
-  top:0;
+  top: 0;
   justify-content: space-between;
   z-index: 10;
   position: fixed;
@@ -17,7 +16,7 @@ export const Nav = styled.nav`
     css`
       height: var(--nav-scroll-height);
       transform: translateY(0px);
-      background-color: rgba(10, 25, 47, 0.85);
+      background-color: ${(props) => props.theme.veryDarkTrans};
       box-shadow: 0 10px 30px -10px var(--navy-shadow);
     `}
   ${(props) =>
@@ -30,7 +29,7 @@ export const Nav = styled.nav`
 `;
 
 export const NavLink = styled.li`
-  color: #fff;
+  color: ${(props) => (props.active ? props.theme.green : props.theme.light)};
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -39,16 +38,14 @@ export const NavLink = styled.li`
   cursor: pointer;
   font-size: 0.9em;
   &:hover {
-    color: green;
+    color: ${(props) => props.theme.lightGreen};
   }
-  &:active {
-    color: yellow;
-  }
+
   transition: 0.3s ease-in-out;
 `;
 
 export const NavMenu = styled.ul`
-  /* padding: 0.5rem calc((100vw - 1000px) / 2) */
+  font-weight: 600;
   display: none;
 
   @media screen and (min-width: ${(props) => props.theme.sm}) {
@@ -63,22 +60,21 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavLogo = styled.div`
-  color: #fff;
+  color: ${(props) => props.theme.light};
   display: flex;
   align-items: center;
   text-decoration: none;
-  /* padding: 0 3rem; */
   padding-left: 2rem;
 
   height: 100%;
   cursor: pointer;
   font-size: 0.9em;
   &:hover {
-    color: green;
+    color: ${(props) => props.theme.lightGreen};
   }
-  &:active {
+  /* &:active {
     color: yellow;
-  }
+  } */
   transition: 0.3s ease-in-out;
 
   @media screen and (min-width: ${(props) => props.theme.sm}) {
@@ -90,8 +86,5 @@ export const NavLogo = styled.div`
 `;
 
 export const NavBtn = styled(Button)`
-
   margin: 2em;
-
-  
 `;

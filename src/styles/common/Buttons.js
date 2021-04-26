@@ -12,7 +12,7 @@ export const Button = styled.button`
   border-radius: 3px;
   transition: 0.3s ease-in-out;
   &:hover {
-    background-color: rgb(24, 236, 151, 0.4);
+    background-color: ${props=>props.theme.hoverGreen};
   }
 `;
 

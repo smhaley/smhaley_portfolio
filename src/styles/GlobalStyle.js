@@ -1,10 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-  --green: rgb(24, 236, 151);
-  --blue: #121136;
+  --green: #5e5656;
+  --blue: #3a435c;
   --pink: palevioletred;
   --white: #e6f1ff;
   --grey: #dadee8;
@@ -33,7 +33,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background-color:var(--blue);
-  color: var(--white);
+  color: #e6f1ff;
   font-family: var(--font-sans);
   font-size: var(--fz-xl);
   line-height: 1.3;
@@ -51,9 +51,26 @@ body {
     opacity: 1;
     transform: translateX(0px);
     transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
-
   }
+
+.fade-enter {
+  transform: translateY(20px);
+  opacity: 0;
+}
+.fade-enter-active {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 200ms linear;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
 
 }
 
- `
+ `;

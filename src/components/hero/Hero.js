@@ -1,18 +1,23 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, createRef } from "react";
 import styled from "styled-components";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Button } from "../../styles/common/Buttons";
 
 const HeroContainer = styled.section`
-  margin:50px;
+  margin: 50px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  padding-top: 10%;
+  transition: 0.1s ease-in-out;
+  @media screen and (min-width: ${(props) => props.theme.md}) {
+    padding-left: 10%;
+    transition: 0.1s ease-in-out;
+  }
 
   h4 {
     font-weight: 400;
-    margin-top:0;
-    color: ${props=> props.theme.teal};
+    margin-top: 0;
+    /* color: ${(props) => props.theme.teal}; */
   }
 
   h1 {
@@ -20,14 +25,14 @@ const HeroContainer = styled.section`
     margin: 0 5px 0;
     white-space: nowrap;
     font-weight: 600;
-    color: ${props=> props.theme.blue};
+    color: ${(props) => props.theme.blue};
   }
 
   h3 {
     font-weight: 500;
-    margin-top:0;
+    margin-top: 0;
     font-size: clamp(1rem, 5vw, 3rem);
-    color: ${props=> props.theme.light};
+    color: ${(props) => props.theme.teal};
   }
   p {
     /* max-width: 300px; */
@@ -36,7 +41,7 @@ const HeroContainer = styled.section`
       align-items: center;
       transition: 0.3s ease-in-out;
       /* max-width: 500px; */
-      transition: .3s linear;
+      transition: 0.3s linear;
     }
   }
 `;
@@ -44,10 +49,12 @@ const HeroContainer = styled.section`
 const Link = styled(Button)`
   text-decoration: none;
   max-width: 100px;
-  margin-top:0;
+  margin-top: 0;
 `;
 
 const Hero = () => {
+  const nodeRef = useRef(null);
+
   const one = <h4>Hey, I'm</h4>;
   const two = <h1>Shawn Haley.</h1>;
   const three = <h3>Full stack data engineer.</h3>;
@@ -66,6 +73,8 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  const nodes = [useRef(null), useRef(null), useRef(null), useRef(null)];
+
   return (
     <>
       <HeroContainer>
@@ -73,11 +82,16 @@ const Hero = () => {
           {content.map((item, index) => (
             <CSSTransition
               key={index}
+              nodeRef={nodes[index]}
               appear={true}
               timeout={4000}
               classNames={"fadeIn"}
             >
-              <div style={{ transitionDelay: `${index * 7 + 1}00ms` }}>
+              <div
+                key={index}
+                ref={nodes[index]}
+                style={{ transitionDelay: `${index * 7 + 1}00ms` }}
+              >
                 {item}
               </div>
             </CSSTransition>
