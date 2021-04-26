@@ -29,4 +29,3 @@ export const theme = {
   grey: "#d5d8de",
 };
 
-//#044b61

@@ -29,19 +29,31 @@ const AboutContainer = styled.section`
 
 const SectionCard = styled.div`
   display: grid;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
   border-radius: 3px;
   box-shadow: 8px 4px 8px 4px rgba(0, 0, 0, 0.3);
   padding: 20px;
-  max-width: 900px;
-  /* @media screen and (min-width: ${(props) => props.theme.lg}) {
+  max-width: 725px;
+  @media screen and (min-width: ${(props) => props.theme.lg}) {
     max-width: 900px;
-  } */
+  }
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem;
 `;
 
 const AboutContent = styled.div`
+  grid-row: 1/2;
+  grid-column: 1/-1;
+
+  @media screen and (min-width: ${(props) => props.theme.xs}) {
+    grid-row: 1/2;
+    grid-column: 1/-1;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.sm}) {
+    grid-row: 1/2;
+    grid-column: 1/4;
+  }
+
   h1 {
     color: ${(props) => props.theme.blue};
   }
@@ -50,29 +62,58 @@ const AboutContent = styled.div`
     color: ${(props) => props.theme.grey};
   }
   padding: 15px;
-  /* max-width: 525px; */
-  /* width: 50 */
   flex: 1;
+  z-index: 2;
 `;
 
 const Stack = styled.div`
-  /* justify-content: space-between; */
-  font-family: Consolas, monospace;
-  font-weight: 300;
-  max-width: 300px;
-  max-width: 35%;
-  position: relative;
-  
-`;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-row: 2/3;
+  grid-column: 1/-1;
+  z-index: 0;
 
-const ImageContainer = styled.div`
-  img {
-    width: 100%;
-    border-radius: 7px;
-    z-index:0;
-
+  @media screen and (min-width: ${(props) => props.theme.xs}) {
+    grid-row: 1/2;
+    grid-column: 1/-1;
   }
 
+  @media screen and (min-width: ${(props) => props.theme.sm}) {
+    grid-row: 1/2;
+    grid-column: 3/-1;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.lg}) {
+    grid-row: 1/2;
+    grid-column: 4/-1;
+  }
+`;
+
+const StackImg = styled.div`
+  background-color: ${(props) => props.theme.green};
+  border-radius: 7px;
+  z-index: 0;
+  max-height: 3400px;
+  img {
+    border-radius: 7px;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+    @media screen and (min-width: ${(props) =>
+        props.theme.xs}) and (max-width: ${(props) => props.theme.sm}) {
+      opacity: 0.2;
+    }
+  }
+  @media screen and (min-width: ${(props) =>
+      props.theme.xs}) and (max-width: ${(props) => props.theme.sm}) {
+    background-color: ${(props) => props.theme.veryDark};
+  }
+  img:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
 `;
 
 const Heading = styled.div`
@@ -114,8 +155,9 @@ const ContentBlock = styled.div`
   border-radius: 5px;
   padding: 10px;
 `;
+
+
 const Section = ({ active }) => {
-  const one = "";
   const two = <h1>Pretty Easy Privacy</h1>;
   const three = <h5>Simplifying PGP encryption</h5>;
   const four = (
@@ -136,23 +178,6 @@ const Section = ({ active }) => {
     </a>
   );
 
-  const stackOne = [
-    "Javascript",
-    "Typescript",
-    "Python",
-    "React",
-    "Okta",
-    "SQL",
-    "Flask",
-    "Django",
-    "R",
-    "Docker",
-    "AWS",
-    "SAS",
-  ];
-  const content = [one, two, three, four, five, six];
-  const heading = <h5>Recent Technologies</h5>;
-
   const nodeRef = useRef(null);
 
   return (
@@ -169,6 +194,11 @@ const Section = ({ active }) => {
               <h3>{`<Work/>`}</h3>
             </Heading>
             <SectionCard>
+              <Stack>
+                <StackImg>
+                  <img src={pep}></img>
+                </StackImg>
+              </Stack>
               <AboutContent>
                 {two}
                 <ContentBlock>
@@ -180,11 +210,6 @@ const Section = ({ active }) => {
                 {five}
                 {six}
               </AboutContent>
-              <Stack>
-                <ImageContainer>
-                  <img src={pep}></img>
-                </ImageContainer>
-              </Stack>
             </SectionCard>
           </AboutContainer>
         </div>
