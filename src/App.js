@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Navbar from "./components/nav/Navbar";
 import Hero from "./components/hero/Hero";
-import Project from "./components/project/Project";
+import ProjectContainer from "./components/project/ProjectContainer";
 import Section from "./components/section/Section";
 import styled from "styled-components";
 import { useIntersectionObserver } from "./components/hooks";
@@ -92,7 +92,7 @@ function App() {
           ref={workRef}
           index={"Work"}
         >
-          <Project active={"Work" === active} />
+          <ProjectContainer active={"Work" === active} />
         </SectionContainer>
 
 

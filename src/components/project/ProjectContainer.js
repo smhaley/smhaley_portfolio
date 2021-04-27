@@ -1,8 +1,13 @@
 import React, { useRef } from "react";
 import styled, { css } from "styled-components";
+import { CSSTransition } from "react-transition-group";
+import pep from "../../pics/pep.png";
+import tab from "../../pics/tab.png";
 import { ReactComponent as GitIcon } from "../../icons/github.svg";
 import { ReactComponent as ExtLink } from "../../icons/external-link.svg";
-import { ReactComponent as DlLink } from "../../icons/logo-npm.svg";
+import { ReactComponent as NPMLink } from "../../icons/logo-npm.svg";
+import Project from "./Project";
+import { pepContent, tabContent } from "./content";
 
 const ProjContainer = styled.section`
   display: flex;
@@ -157,72 +162,58 @@ const ContentBlock = styled.div`
   padding: 10px;
 `;
 
-const ProjStack = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+const Stack = styled.div`
+  margin-top:100px;
 `;
 
-const ListItem = styled.li`
-  font-family: Consolas, monospace;
-  padding-right: 50px;
-  padding-left: 2ch;
-  padding-top: 1ch;
-
-  ::marker {
-    content: "▸";
-    padding: 5px;
-    color: ${(props) => props.theme.blue};
-  }
-`;
-
-const Project = ({ content, image }) => {
-  const { heading, subHeading, mainContent, gitLink, appLink, stack, dlLink } = content;
-
+const ProjectContainer = ({ active }) => {
+  const heading = <h1>Pretty Easy Privacy</h1>;
+  const subHeading = <h5>Simplifying PGP encryption</h5>;
+  const mainContent = (
+    <p>
+      Inspired by a client-side encryption module I wrote at work, Pretty Easy
+      Privacy simplifies OpenPGP encryption. The goal is to privide a simplified
+      interface for client-side encryption and to inspire interest in the topic.
+    </p>
+  );
   const git = (
-    <a href={gitLink} target="_blank">
+    <a href="/">
       <GitIcon />
     </a>
   );
   const goTo = (
-    <a href={appLink} target="_blank">
+    <a href="/">
       <ExtLink />
     </a>
   );
 
-  const dl = (
-    <a href={dlLink} target="_blank">
-      <DlLink />
-    </a>
-  );
+  const projImg = <img src={pep}></img>;
 
-  const projImg = <img src={image}></img>;
+  const nodeRef = useRef(null);
 
   return (
     <>
-      <ProjCard>
-        <ImgContainer>
-          <ProjImg>{projImg}</ProjImg>
-        </ImgContainer>
-        <Content>
-          <h1>{heading}</h1>
-          <ContentBlock>
-            <h5>{subHeading}</h5>
-            <p>{mainContent}</p>
-          </ContentBlock>
-          {git}
-          {goTo}
-          {/* {dl && {dl}} */}
-          {dlLink && dl}
-          <ProjStack>
-            {stack.map((item) => (
-              <ListItem key={item}>{item}</ListItem>
-            ))}
-          </ProjStack>
-        </Content>
-      </ProjCard>
+      <CSSTransition
+        nodeRef={nodeRef}
+        in={active}
+        timeout={200}
+        classNames="fade"
+      >
+        <div ref={nodeRef}>
+          <ProjContainer show={active}>
+            <Heading>
+              <h3>{`<Work/>`}</h3>
+            </Heading>
+           
+            <Project content={pepContent} image={pep} />
+            <Stack>
+            <Project content={tabContent} image={tab} />
+            </Stack>
+          </ProjContainer>
+        </div>
+      </CSSTransition>
     </>
   );
 };
 
-export default Project;
+export default ProjectContainer;
