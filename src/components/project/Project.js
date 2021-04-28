@@ -117,39 +117,6 @@ const ProjImg = styled.div`
   }
 `;
 
-const Heading = styled.div`
-  color: ${(props) => props.theme.green};
-  h3 {
-    font-family: Consolas, monospace;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    @media screen and (min-width: ${(props) => props.theme.xs}) {
-      font-size: 1.3rem;
-      &::before,
-      &::after {
-        display: inline-block;
-        content: "";
-        border-top: 0.05rem solid ${(props) => props.theme.blue};
-        width: 2rem;
-        margin: 0 1.5rem;
-        transform: translateY(-0.4rem);
-      }
-    }
-    @media screen and (min-width: ${(props) => props.theme.sm}) {
-      font-size: 1.7rem;
-      &::before,
-      &::after {
-        width: 4rem;
-        margin: 0 1.5rem;
-        transform: translateY(-0.5rem);
-      }
-    }
-  }
-
-  @media screen and (min-width: ${(props) => props.theme.md}) {
-    margin-top: -52px;
-  }
-`;
 
 const ContentBlock = styled.div`
   background-color: ${(props) => props.theme.veryDark};
@@ -158,6 +125,7 @@ const ContentBlock = styled.div`
 `;
 
 const ProjStack = styled.ul`
+  margin-left: -20px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -177,7 +145,15 @@ const ListItem = styled.li`
 `;
 
 const Project = ({ content, image }) => {
-  const { heading, subHeading, mainContent, gitLink, appLink, stack, dlLink } = content;
+  const {
+    heading,
+    subHeading,
+    mainContent,
+    gitLink,
+    appLink,
+    stack,
+    dlLink,
+  } = content;
 
   const git = (
     <a href={gitLink} target="_blank">
@@ -212,7 +188,6 @@ const Project = ({ content, image }) => {
           </ContentBlock>
           {git}
           {goTo}
-          {/* {dl && {dl}} */}
           {dlLink && dl}
           <ProjStack>
             {stack.map((item) => (

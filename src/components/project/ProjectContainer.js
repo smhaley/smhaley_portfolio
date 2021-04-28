@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { CSSTransition } from "react-transition-group";
 import pep from "../../pics/pep.png";
@@ -14,6 +14,7 @@ const ProjContainer = styled.section`
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
   svg {
     stroke: ${(props) => props.theme.light};
     padding: 5px;
@@ -167,6 +168,9 @@ const Stack = styled.div`
 `;
 
 const ProjectContainer = ({ active }) => {
+
+  const [show, setShow] = useState(false);
+
   const heading = <h1>Pretty Easy Privacy</h1>;
   const subHeading = <h5>Simplifying PGP encryption</h5>;
   const mainContent = (
@@ -191,18 +195,23 @@ const ProjectContainer = ({ active }) => {
 
   const nodeRef = useRef(null);
 
+
+  useEffect(() => {
+    active && !show && setShow(true);
+  }, [active]);
+
   return (
     <>
       <CSSTransition
         nodeRef={nodeRef}
-        in={active}
+        in={show}
         timeout={200}
         classNames="fade"
       >
         <div ref={nodeRef}>
-          <ProjContainer show={active}>
+          <ProjContainer show={show}>
             <Heading>
-              <h3>{`<Work/>`}</h3>
+              <h3>{`<RecentWork/>`}</h3>
             </Heading>
            
             <Project content={pepContent} image={pep} />

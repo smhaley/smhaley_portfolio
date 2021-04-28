@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { CSSTransition } from "react-transition-group";
 import { Button } from "../../styles/common/Buttons";
@@ -124,6 +124,8 @@ const Link = styled(Button)`
 `;
 
 const Section = ({ active }) => {
+  const [show, setShow] = useState(false);
+
   const one = "";
   const two = <h1>Educator turned statistician turn developer</h1>;
   const three = (
@@ -162,16 +164,20 @@ const Section = ({ active }) => {
 
   const nodeRef = useRef(null);
 
+  useEffect(() => {
+    active && !show && setShow(true);
+  }, [active]);
+
   return (
     <>
       <CSSTransition
         nodeRef={nodeRef}
-        in={active}
+        in={show}
         timeout={200}
         classNames="fade"
       >
         <div ref={nodeRef}>
-          <AboutContainer show={active}>
+          <AboutContainer show={show}>
             <Heading>
               <h3>{`<About/>`}</h3>
             </Heading>

@@ -12,25 +12,11 @@ const AppContainer = styled.section`
   max-width: 1200px;
   padding: 20px;
   display: flex;
-  /* 
-  @media screen and (min-width: ${(props) => props.theme.xs}) {
-    padding: 20px auto;
-    transition: 0.3s ease-in-out;
-  }
-
-  @media screen and (min-width: ${(props) => props.theme.sm}) {
-    padding: 20px auto;
-    transition: 0.3s ease-in-out;
-  }
-
-  @media screen and (min-width: ${(props) => props.theme.md}) {
-    padding: 20px 150px 20px 150px;
-    transition: 0.3s ease-in-out;
-  } */
 `;
 
 const SectionDiv = styled.div`
   /* margin: 50px; */
+  /* flex:1; */
   height: 100vh;
   /* background-color: purple; */
 `;
@@ -65,23 +51,37 @@ const SectionContainer = React.forwardRef((props, ref) => {
 function App() {
   const [active, setActive] = useState();
 
-  const heroRef = useRef();
-  const aboutRef = useRef();
-  const workRef = useRef();
+  const refs = {
+    Hero: useRef(),
+    About: useRef(),
+    Work: useRef(),
+    Contact: useRef(),
+  };
 
   const activeHandler = (section) => setActive(section);
 
+  const handleScroll = (target) => {
+    refs[target].current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <>
-      <Navbar active={active} />
-
+      <Navbar active={active} handleScroll={handleScroll} />
       <AppContainer>
-        <SectionDiv>
-          <Hero />
-        </SectionDiv>
         <SectionContainer
           activeHandler={activeHandler}
-          ref={heroRef}
+          ref={refs["Hero"]}
+          index={"Hero"}
+        >
+          <Hero />
+        </SectionContainer>
+
+        <SectionContainer
+          activeHandler={activeHandler}
+          ref={refs["About"]}
           index={"About"}
         >
           <Section active={"About" === active} />
@@ -89,23 +89,19 @@ function App() {
 
         <SectionContainer
           activeHandler={activeHandler}
-          ref={workRef}
+          ref={refs["Work"]}
           index={"Work"}
         >
           <ProjectContainer active={"Work" === active} />
         </SectionContainer>
 
-
-        <div style={{ margin: "100px" }}></div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
-        <div style={{ margin: "100px" }}>dfgsdgasfg</div>
+        <SectionContainer
+          activeHandler={activeHandler}
+          ref={refs["Contact"]}
+          index={"Contact"}
+        >
+          <Section active={"Contact" === active} />
+        </SectionContainer>
       </AppContainer>
     </>
   );

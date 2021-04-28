@@ -3,8 +3,11 @@ import Burger from "./Burger";
 import { useOnClickOutside, useSideNavMediaClose } from "../hooks";
 import Menu from "./Menu";
 import { Nav, NavLink, NavBtn, NavMenu, NavLogo } from "./styled/Navbar.styled";
+import { ReactComponent as Logo } from "../../icons/logo.svg";
 
-const Navbar = ({active}) => {
+
+
+const Navbar = ({active, handleScroll}) => {
   const node = useRef();
 
   const [open, setOpen] = useState(false);
@@ -46,19 +49,19 @@ const Navbar = ({active}) => {
   });
 
   const navItems = ['About', 'Work', 'Contact']
-
   return (
     <>
       <Nav scroll={scroll}>
         <NavLogo>
-          <h1>sh</h1>
+          {/* <h1>sh</h1> */}
+          <Logo/>
         </NavLogo>
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </div>
         <NavMenu>
-          {navItems.map(item=><NavLink key = {item} active={item===active} activeStyle>{item}</NavLink>)}
+          {navItems.map(item=><NavLink key = {item} active={item===active} onClick={()=>handleScroll(item)} activeStyle>{item}</NavLink>)}
           <NavBtn>Resume</NavBtn>
         </NavMenu>
       </Nav>
