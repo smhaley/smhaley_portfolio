@@ -1,8 +1,10 @@
 import React, { useLayoutEffect } from "react";
-import { StyledMenu } from "./styled/Menu.styled";
+import { StyledMenu, MenuButton } from "./styled/Menu.styled";
 import { bool } from "prop-types";
 
-const Menu = ({ open }) => {
+const Menu = ({ open, handleMenuClick }) => {
+  const options = ["About", "Work", "Contact"];
+
   useLayoutEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -13,9 +15,11 @@ const Menu = ({ open }) => {
 
   return (
     <StyledMenu open={open}>
-      <a href="/">About</a>
-      <a href="/">Work</a>
-      <a href="/">Contact</a>
+      {options.map((item) => (
+        <MenuButton key={item} onClick={() => handleMenuClick(item)}>
+          {item}
+        </MenuButton>
+      ))}
     </StyledMenu>
   );
 };

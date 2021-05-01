@@ -46,23 +46,11 @@ const HeroContainer = styled.section`
   }
 `;
 
-const Link = styled(Button)`
-  text-decoration: none;
-  max-width: 100px;
-  margin-top: 0;
-`;
-
-const Hero = () => {
-  const nodeRef = useRef(null);
-
+const Hero = ({ handleContactScroll }) => {
   const one = <h4>Hey, I'm</h4>;
   const two = <h1>Shawn Haley.</h1>;
   const three = <h3>Full stack data engineer.</h3>;
-  const five = (
-    <Link as="a" href={`mailto:${"shawnh87@gmail.com"}`}>
-      Get In Touch
-    </Link>
-  );
+  const five = <Button onClick={handleContactScroll}>Get In Touch</Button>;
 
   const content = [one, two, three, five];
 

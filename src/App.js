@@ -3,6 +3,7 @@ import Navbar from "./components/nav/Navbar";
 import Hero from "./components/hero/Hero";
 import ProjectContainer from "./components/project/ProjectContainer";
 import Section from "./components/section/Section";
+import Contact from "./components/contact/Contact";
 import styled from "styled-components";
 import { useIntersectionObserver } from "./components/hooks";
 
@@ -17,7 +18,7 @@ const AppContainer = styled.section`
 const SectionDiv = styled.div`
   /* margin: 50px; */
   /* flex:1; */
-  height: 100vh;
+  min-height: 100vh;
   /* background-color: purple; */
 `;
 
@@ -76,7 +77,7 @@ function App() {
           ref={refs["Hero"]}
           index={"Hero"}
         >
-          <Hero />
+          <Hero handleContactScroll={()=>handleScroll('Contact')}/>
         </SectionContainer>
 
         <SectionContainer
@@ -100,7 +101,7 @@ function App() {
           ref={refs["Contact"]}
           index={"Contact"}
         >
-          <Section active={"Contact" === active} />
+          <Contact active={"Contact" === active} />
         </SectionContainer>
       </AppContainer>
     </>

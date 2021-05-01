@@ -5,63 +5,69 @@ import Menu from "./Menu";
 import { Nav, NavLink, NavBtn, NavMenu, NavLogo } from "./styled/Navbar.styled";
 import { ReactComponent as Logo } from "../../icons/logo.svg";
 
-
-
-const Navbar = ({active, handleScroll}) => {
+const Navbar = ({ active, handleScroll }) => {
   const node = useRef();
 
   const [open, setOpen] = useState(false);
-  const [scroll, setScroll] = useState('top');
+  const [scroll, setScroll] = useState("top");
+
+  const handleMenuClick = (item) => {
+    setOpen(false);
+    handleScroll(item);
+  };
 
   const prevScrollY = useRef(0);
 
   useOnClickOutside(node, () => setOpen(false));
   useSideNavMediaClose("768px", () => setOpen(false));
 
-  const scrollListener =  () => {
-
-    const position = window.pageYOffset
-    const prevScrollPos =  prevScrollY.current
-    let localScroll
-    if (position < 10){
-      localScroll = 'top'
-    } else if (position<=prevScrollPos){
-      localScroll='up'
-    } else if (position>prevScrollPos){
-      localScroll='down'
+  const scrollListener = () => {
+    const position = window.pageYOffset;
+    const prevScrollPos = prevScrollY.current;
+    let localScroll;
+    if (position < 10) {
+      localScroll = "top";
+    } else if (position <= prevScrollPos) {
+      localScroll = "up";
+    } else if (position > prevScrollPos) {
+      localScroll = "down";
     }
 
     prevScrollY.current = position;
-    if (localScroll!==scroll)
-      setScroll(localScroll)
-  }
-  
+    if (localScroll !== scroll) setScroll(localScroll);
+  };
+
   useEffect(() => {
-    window.addEventListener(
-      "scroll",
-      scrollListener 
-    );
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        scrollListener 
-      );
+    window.addEventListener("scroll", scrollListener);
+    return () => window.removeEventListener("scroll", scrollListener);
   });
 
-  const navItems = ['About', 'Work', 'Contact']
+  const navItems = ["About", "Work", "Contact"];
   return (
     <>
       <Nav scroll={scroll}>
         <NavLogo>
-          {/* <h1>sh</h1> */}
-          <Logo/>
+          <Logo />
         </NavLogo>
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
+          <Menu
+            open={open}
+            setOpen={setOpen}
+            handleMenuClick={handleMenuClick}
+          />
         </div>
         <NavMenu>
-          {navItems.map(item=><NavLink key = {item} active={item===active} onClick={()=>handleScroll(item)} activeStyle>{item}</NavLink>)}
+          {navItems.map((item) => (
+            <NavLink
+              key={item}
+              active={item === active}
+              onClick={() => handleScroll(item)}
+              activeStyle
+            >
+              {item}
+            </NavLink>
+          ))}
           <NavBtn>Resume</NavBtn>
         </NavMenu>
       </Nav>

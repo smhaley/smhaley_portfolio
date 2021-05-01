@@ -4,26 +4,6 @@ import { ReactComponent as GitIcon } from "../../icons/github.svg";
 import { ReactComponent as ExtLink } from "../../icons/external-link.svg";
 import { ReactComponent as DlLink } from "../../icons/logo-npm.svg";
 
-const ProjContainer = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  svg {
-    stroke: ${(props) => props.theme.light};
-    padding: 5px;
-    margin: 5px;
-  }
-  svg:hover {
-    stroke: ${(props) => props.theme.green};
-  }
-
-  ${(props) =>
-    !props.show &&
-    css`
-      visibility: hidden;
-    `}
-`;
 
 const ProjCard = styled.div`
   display: grid;

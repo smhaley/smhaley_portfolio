@@ -49,3 +49,24 @@ export const StyledMenu = styled.nav`
     }
   }
 `;
+
+export const MenuButton = styled.button`
+    background:none;
+    border:none;
+    margin:0;
+    /* padding:10px;/\ */
+    cursor: pointer;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    padding: 2rem 0;
+    font-weight: bold;
+    letter-spacing: 0.3rem;
+    color: ${(props) => props.theme.darkNavy};
+    text-decoration: none;
+    transition: color 0.3s linear;
+
+    &:hover {
+      color: ${(props) => props.theme.navy};
+    }
+
+`;
