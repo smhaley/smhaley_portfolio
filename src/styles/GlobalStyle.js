@@ -71,6 +71,23 @@ body {
 }
 
 
+.fadeContact-enter {
+  transform: translateY(20px);
+  opacity: 0;
+}
+.fadeContact-enter-active {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 300ms linear;
+}
+.fadeContact-exit {
+  opacity: 1;
+}
+.fadeContact-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
 }
 
  `;

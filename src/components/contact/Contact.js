@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
-import styled, { css } from "styled-components";
-import { CSSTransition } from "react-transition-group";
+import { useForm } from "react-hook-form";
+import styled, { css, keyframes, property } from "styled-components";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Button } from "../../styles/common/Buttons";
+import { ReactComponent as Success } from "../../icons/success.svg";
 
 const AboutContainer = styled.section`
   display: flex;
@@ -16,9 +18,7 @@ const AboutContainer = styled.section`
 `;
 
 const SectionCard = styled.div`
-  /* flex-grow: 100; */
   width: 90%;
-  /* align-items: center; */
   border-radius: 3px;
   box-shadow: 8px 4px 8px 4px rgba(0, 0, 0, 0.3);
   padding: 20px;
@@ -70,133 +70,170 @@ const Heading = styled.div`
 
 export const FormGroup = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: column;
   max-width: 550px;
   margin: 20px auto;
 
   button {
-      width: 125px;
-      
+    max-width: 100px;
+  }
+
+  input,
+  textarea {
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: ${(props) => props.theme.veryDark};
+    background-color: ${(props) => props.theme.light};
+    border: none;
+    border-radius: 3px;
+    width: 70%;
+    display: block;
+    margin-bottom: 0.5em;
+
+    &:focus {
+      transition: 0.2s ease-in-out;
+      outline: none !important;
+      border: 1px solid ${(props) => props.theme.green};
+      box-shadow: 0 0 4px #719ece;
+    }
+    &:active {
+      transition: 0.2s ease-in-out;
+      outline: none !important;
+      border: 1px solid ${(props) => props.theme.green};
+      box-shadow: 0 0 4px #719ece;
+    }
+  }
+
+  textarea {
+    width: 90%;
+    resize: vertical;
+  }
+
+  p {
+    color: ${(props) => props.theme.grey};
+    padding-bottom: 15px;
   }
 `;
 
-export const Label = styled.label`
+const Label = styled.label`
   margin-bottom: 0.5em;
   color: ${(props) => props.theme.blue};
   display: block;
 `;
 
-export const Input = styled.input.attrs({
-  type: "text",
-})`
-  padding: 1rem;
-  font-size: 1rem;
-  color: ${(props) => props.theme.veryDark};
-  background: ${(props) => props.theme.grey};
-  border: none;
-  border-radius: 3px;
-  width: 70%;
-  display: block;
-  margin-bottom: 0.5em;
-
-  &:focus {
-    outline: none !important;
-    border: 1px solid ${(props) => props.theme.green};
-    box-shadow: 0 0 4px #719ece;
-  }
-`;
-
-export const Email = styled.input.attrs({
-  type: "email",
-})`
-  font-size: 1rem;
-  padding: 1em;
-  color: ${(props) => props.theme.veryDark};
-  background: ${(props) => props.theme.grey};
-  border: none;
-  border-radius: 3px;
-  width: 70%;
-  display: block;
-  margin-bottom: 0.5em;
-
-  &:focus {
-    outline: none !important;
-    border: 1px solid ${(props) => props.theme.green};
-    box-shadow: 0 0 4px #719ece;
-  }
-`;
-
-export const MessageBody = styled.textarea.attrs({
-  rows: 6,
-  resize: 'vertical'
-})`
-  padding: 1em;
-  resize: vertical; 
-  font-size: 1rem;
-  color: ${(props) => props.theme.veryDark};
-  background: ${(props) => props.theme.grey};
-  border: none;
-  border-radius: 3px;
-  width: 90%;
-  display: block;
-  margin-bottom: 0.5em;
-
-  &:focus {
-    outline: none !important;
-    border: 1px solid ${(props) => props.theme.green};
-    box-shadow: 0 0 4px #719ece;
-  }
-`;
-
-export const Message = styled.label`
+const Message = styled.label`
   margin-bottom: 0.5em;
   padding-left: 10px;
   font-size: 0.85rem;
   color: palevioletred;
-  /* display: block; */
 `;
 
 const InputDiv = styled.div`
   margin-bottom: 1.5em;
 `;
 
+const ThankYou = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+  text-align: center;
+
+  h1 {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    font-weight: 400;
+    color: ${(props) => props.theme.blue};
+  }
+
+  h3 {
+    font-weight: 400;
+    margin-top: 0;
+    font-size: clamp(1rem, 7vw, 2rem);
+    color: ${(props) => props.theme.teal};
+  }
+`;
+
+const rotate = keyframes`{
+    @property --angle {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
+	to {
+		--angle: 360deg;
+	}
+    }`;
+
+const ThanksDiv = styled.div`
+margin-top: 20px;
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  --angle: 0deg;
+  max-width: 50vmin;
+  max-height: 50vmin;
+  border: 2vmin solid;
+  border-image: conic-gradient(
+      from var(--angle),
+      ${(props) => props.theme.teal},
+      purple,
+      ${(props) => props.theme.green},
+      purple,
+      ${(props) => props.theme.teal}
+    )
+    1;
+
+  animation: 2s ${rotate} linear infinite;
+`;
+
 const Section = ({ active }) => {
+  //{from_name}, {to_name}, message,
+  const serviceId = "service_znvjccb";
+  const templateId = "template_55u84ye";
+
   const [show, setShow] = useState(false);
+  const [view, setView] = useState("form");
 
-  const one = "";
-  const two = <h1>Educator turned statistician turn developer</h1>;
-  const three = (
-    <p>
-      Back end, front end, data engineering, machine learning. I'm a passionate
-      developer in love with problem solving. My present interest is web and app
-      development, but I'm always open to new problems.
-    </p>
-  );
-  const four = (
-    <p>
-      Currently I am a React developer and data engineer with Travelers
-      Insurance. My focus is developing apps for consuming and training Natural
-      Language models.
-    </p>
-  );
-  const five = <a href="/">Let's connect</a>;
+  const onSubmit = (data) => {
+    console.log(data);
+    setView("thanks");
 
-  const stackOne = [
-    "Javascript",
-    "Typescript",
-    "Python",
-    "React",
-    "Okta",
-    "SQL",
-    "Flask",
-    "Django",
-    "R",
-    "Docker",
-    "AWS",
-    "SAS",
-  ];
-  //   const content = [one, two, three, four, five, six];
-  const heading = <h5>Recent Technologies</h5>;
+    //   sendFeedback(serviceId, templateId, {
+    //     from_name: name,
+    //     message: message,
+    //     reply_to: email,
+    //   });
+    // r.target.reset();
+    // data.target.reset();
+  };
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  console.log(errors);
+
+  const sendFeedback = (serviceId, templateId, variables) => {
+    window.emailjs
+      .send(serviceId, templateId, variables)
+      .then((res) => {
+        console.log("Email successfully sent!");
+      })
+      .catch((err) =>
+        console.error(
+          "There has been an error.  Here some thoughts on the error that occured:",
+          err
+        )
+      );
+  };
 
   const nodeRef = useRef(null);
 
@@ -217,26 +254,68 @@ const Section = ({ active }) => {
             <Heading>
               <h3>{`<Contact/>`}</h3>
             </Heading>
-            <SectionCard>
-              <FormGroup>
-                <InputDiv>
-                  <Label htmlFor="label">Name</Label>
-                  <Input id="label" />
-                  <Message>Name required!</Message>
-                </InputDiv>
-                <InputDiv>
-                  <Label>Email</Label>
-                  <Email />
-                  <Message>Email required!</Message>
-                </InputDiv>
-                <InputDiv>
-                  <Label>Message</Label>
-                  <MessageBody />
-                  <Message>Messaged required!</Message>
-                </InputDiv>
-                <Button>Let's Connect</Button>
-              </FormGroup>
-            </SectionCard>
+            
+              <TransitionGroup component={null}>
+                <CSSTransition   key = {view} timeout={800} classNames="fadeContact">
+
+                    { view==='form' ? (
+                        <SectionCard>
+                    <FormGroup>
+                      <p>Want to find out more? Let's connect!</p>
+                      <form onSubmit={handleSubmit(onSubmit)}>
+                        <InputDiv>
+                          <Label>Name</Label>
+                          <input
+                            {...register("name", {
+                              required: "Name required!",
+                            })}
+                          />
+                          {errors.name && (
+                            <Message>{errors.name.message}</Message>
+                          )}
+                        </InputDiv>
+                        <InputDiv>
+                          <Label>Email</Label>
+                          <input
+                            {...register("email", {
+                              required: "Email required!",
+                              pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Please check your email format!",
+                              },
+                            })}
+                          />
+                          {errors.email && (
+                            <Message>{errors.email.message}</Message>
+                          )}
+                        </InputDiv>
+                        <InputDiv>
+                          <Label>Message</Label>
+                          <textarea
+                            rows={6}
+                            resize={"vertical"}
+                            {...register("message", {
+                              required: "Message Required!",
+                            })}
+                          ></textarea>
+                          {errors.message && (
+                            <Message>{errors.message.message}</Message>
+                          )}
+                        </InputDiv>
+                        <Button type="submit">Send</Button>
+                      </form>
+                    </FormGroup>
+                    </SectionCard>
+                  ) :  (
+                    <ThanksDiv>
+                      <ThankYou>
+                        <h3>🙏 We'll be in touch soon!</h3>
+                      </ThankYou>
+                    </ThanksDiv>
+                  )}
+                </CSSTransition>
+              </TransitionGroup>
+            
           </AboutContainer>
         </div>
       </CSSTransition>

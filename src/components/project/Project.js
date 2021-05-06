@@ -4,7 +4,6 @@ import { ReactComponent as GitIcon } from "../../icons/github.svg";
 import { ReactComponent as ExtLink } from "../../icons/external-link.svg";
 import { ReactComponent as DlLink } from "../../icons/logo-npm.svg";
 
-
 const ProjCard = styled.div`
   display: grid;
   border-radius: 3px;
@@ -97,7 +96,6 @@ const ProjImg = styled.div`
   }
 `;
 
-
 const ContentBlock = styled.div`
   background-color: ${(props) => props.theme.veryDark};
   border-radius: 5px;
@@ -152,7 +150,11 @@ const Project = ({ content, image }) => {
     </a>
   );
 
-  const projImg = <img src={image}></img>;
+  const projImg = (
+    <a href={appLink} target="_blank">
+      <img src={image}></img>
+    </a>
+  );
 
   return (
     <>

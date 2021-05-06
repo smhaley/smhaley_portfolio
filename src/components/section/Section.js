@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { CSSTransition } from "react-transition-group";
 import { Button } from "../../styles/common/Buttons";
+import { ReactComponent as GitIcon } from "../../icons/github.svg";
+import { ReactComponent as LinkedIn } from "../../icons/linkedin.svg";
 
 const AboutContainer = styled.section`
   display: flex;
@@ -13,6 +15,14 @@ const AboutContainer = styled.section`
     css`
       visibility: hidden;
     `}
+    svg {
+    stroke: ${(props) => props.theme.light};
+    padding: 5px;
+    margin: 5px;
+  }
+  svg:hover {
+    stroke: ${(props) => props.theme.green};
+  }
 `;
 
 const SectionCard = styled.div`
@@ -142,7 +152,7 @@ const Section = ({ active }) => {
       Language models.
     </p>
   );
-  const five = <a href="/">Let's connect</a>;
+  const five = <div><a href="https://www.linkedin.com/in/shawn-haley/" target="_blank"><LinkedIn/></a><a href="https://github.com/smhaley/"><GitIcon/></a></div>;
   const six = <Link>Resume</Link>;
 
   const stackOne = [
