@@ -26,6 +26,7 @@ export const Nav = styled.nav`
       transform: translateY(calc(var(--nav-scroll-height) * -1));
       box-shadow: 0 10px 30px -10px var(--navy-shadow);
     `}
+
 `;
 
 export const NavLink = styled.li`
@@ -37,6 +38,7 @@ export const NavLink = styled.li`
   height: 100%;
   cursor: pointer;
   font-size: 0.9em;
+
   &:hover {
     color: ${(props) => props.theme.lightGreen};
   }
@@ -65,16 +67,12 @@ export const NavLogo = styled.div`
   align-items: center;
   text-decoration: none;
   padding-left: 2rem;
-
   height: 100%;
-  cursor: pointer;
   font-size: 0.9em;
+
   &:hover {
     color: ${(props) => props.theme.lightGreen};
   }
-  /* &:active {
-    color: yellow;
-  } */
   transition: 0.3s ease-in-out;
 
   @media screen and (min-width: ${(props) => props.theme.sm}) {

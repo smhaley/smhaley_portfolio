@@ -50,7 +50,7 @@ body {
 .fadeIn-appear-active {
     opacity: 1;
     transform: translateX(0px);
-    transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
+    transition: opacity 800ms ease-in-out, transform 600ms ease-in-out;
   }
 
 .fade-enter {
@@ -87,6 +87,30 @@ body {
   opacity: 0;
   transition: opacity 500ms ease-in-out;
 }
+
+
+
+.fadeNav-appear {
+  transform: translateY(-50px);
+    opacity: 0;
+  }
+
+.fadeNav-appear-active {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity 600ms ease-in-out, transform 500ms ease-in-out;
+  }
+
+  .fadeLogo-appear {
+    opacity: 0;
+  }
+
+.fadeLogo-appear-active {
+    opacity: 1;
+    transition: opacity 700ms ease-in-out;
+  }
+
+
 
 }
 

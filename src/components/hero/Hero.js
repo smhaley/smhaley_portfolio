@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, createRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Button } from "../../styles/common/Buttons";
@@ -17,11 +17,10 @@ const HeroContainer = styled.section`
   h4 {
     font-weight: 400;
     margin-top: 0;
-    /* color: ${(props) => props.theme.teal}; */
   }
 
   h1 {
-    font-size: clamp(1.5rem, 8vw, 5rem);
+    font-size: clamp(2.6rem, 10vw, 5rem);
     margin: 0 5px 0;
     white-space: nowrap;
     font-weight: 600;
@@ -35,12 +34,10 @@ const HeroContainer = styled.section`
     color: ${(props) => props.theme.teal};
   }
   p {
-    /* max-width: 300px; */
     transition: 0.3s ease-in-out;
     @media screen and (min-width: ${(props) => props.theme.xs}) {
       align-items: center;
       transition: 0.3s ease-in-out;
-      /* max-width: 500px; */
       transition: 0.3s linear;
     }
   }
@@ -53,13 +50,6 @@ const Hero = ({ handleContactScroll }) => {
   const five = <Button onClick={handleContactScroll}>Get In Touch</Button>;
 
   const content = [one, two, three, five];
-
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 300);
-    return () => clearTimeout(timeout);
-  }, []);
 
   const nodes = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
@@ -78,7 +68,7 @@ const Hero = ({ handleContactScroll }) => {
               <div
                 key={index}
                 ref={nodes[index]}
-                style={{ transitionDelay: `${index * 7 + 1}00ms` }}
+                style={{ transitionDelay: `${index * 3 + 1}00ms` }}
               >
                 {item}
               </div>

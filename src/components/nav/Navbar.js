@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Burger from "./Burger";
-import { useOnClickOutside, useSideNavMediaClose } from "../hooks";
 import Menu from "./Menu";
+import { useOnClickOutside, useSideNavMediaClose } from "../hooks";
 import { Nav, NavLink, NavBtn, NavMenu, NavLogo } from "./styled/Navbar.styled";
 import { ReactComponent as Logo } from "../../icons/logo.svg";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Navbar = ({ active, handleScroll }) => {
   const node = useRef();
@@ -37,38 +38,74 @@ const Navbar = ({ active, handleScroll }) => {
     if (localScroll !== scroll) setScroll(localScroll);
   };
 
+  const nodes = [useRef(null), useRef(null), useRef(null), useRef(null)];
+  const nodesMain = [useRef(null), useRef(null)];
+
+  const logo = (
+    <NavLogo>
+      <Logo />
+    </NavLogo>
+  );
+
+  const burger = (
+    <div ref={node}>
+      <Burger open={open} setOpen={setOpen} />
+      <Menu open={open} setOpen={setOpen} handleMenuClick={handleMenuClick} />
+    </div>
+  );
+
+  const navButton = <NavBtn>Resume</NavBtn>;
+
+  const navItems = ["About", "Work", "Contact", navButton];
+  const navMain = [logo, burger];
+
   useEffect(() => {
     window.addEventListener("scroll", scrollListener);
     return () => window.removeEventListener("scroll", scrollListener);
   });
 
-  const navItems = ["About", "Work", "Contact"];
   return (
     <>
       <Nav scroll={scroll}>
-        <NavLogo>
-          <Logo />
-        </NavLogo>
-        <div ref={node}>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu
-            open={open}
-            setOpen={setOpen}
-            handleMenuClick={handleMenuClick}
-          />
-        </div>
-        <NavMenu>
-          {navItems.map((item) => (
-            <NavLink
-              key={item}
-              active={item === active}
-              onClick={() => handleScroll(item)}
-              activeStyle
+        <TransitionGroup component={null}>
+          {navMain.map((item, index) => (
+            <CSSTransition
+              key={index + 3}
+              in={true}
+              nodeRef={nodesMain[index]}
+              appear={true}
+              timeout={400}
+              classNames={"fadeLogo"}
             >
-              {item}
-            </NavLink>
+              <div key={index + 3} ref={nodesMain[index]}>
+                {item}
+              </div>
+            </CSSTransition>
           ))}
-          <NavBtn>Resume</NavBtn>
+        </TransitionGroup>
+        <NavMenu>
+          <TransitionGroup component={null}>
+            {navItems.map((item, index) => (
+              <CSSTransition
+                key={item}
+                in={true}
+                nodeRef={nodes[index]}
+                appear={true}
+                timeout={1200}
+                classNames={"fadeNav"}
+              >
+                <NavLink
+                  key={item}
+                  ref={nodes[index]}
+                  active={item === active}
+                  onClick={() => handleScroll(item)}
+                  activeStyle
+                >
+                  {item}
+                </NavLink>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </NavMenu>
       </Nav>
     </>

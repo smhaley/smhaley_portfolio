@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import styled, { css, keyframes, property } from "styled-components";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Button } from "../../styles/common/Buttons";
-import { ReactComponent as Success } from "../../icons/success.svg";
+import { Heading } from "../../styles/common/generic";
 
 const AboutContainer = styled.section`
   display: flex;
@@ -30,41 +30,6 @@ const SectionCard = styled.div`
   }
   @media screen and (min-width: ${(props) => props.theme.lg}) {
     max-width: 50%;
-  }
-`;
-
-const Heading = styled.div`
-  color: ${(props) => props.theme.green};
-  h3 {
-    font-family: Consolas, monospace;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    @media screen and (min-width: ${(props) => props.theme.sm}) {
-      font-size: 1.8rem;
-    }
-  }
-
-  h3::before,
-  h3::after {
-    display: inline-block;
-    content: "";
-    border-top: 0.05rem solid ${(props) => props.theme.blue};
-    width: 3rem;
-    margin: 0 1.5rem;
-    transform: translateY(-0.27rem);
-
-    @media screen and (min-width: ${(props) => props.theme.sm}) {
-      display: inline-block;
-      content: "";
-      border-top: 0.05rem solid ${(props) => props.theme.blue};
-      width: 4rem;
-      margin: 0 1.5rem;
-      transform: translateY(-0.55rem);
-    }
-  }
-
-  @media screen and (min-width: ${(props) => props.theme.md}) {
-    margin-top: -52px;
   }
 `;
 
@@ -167,7 +132,7 @@ const rotate = keyframes`{
     }`;
 
 const ThanksDiv = styled.div`
-margin-top: 20px;
+  margin-top: 20px;
   @property --angle {
     syntax: "<angle>";
     initial-value: 0deg;
@@ -191,8 +156,7 @@ margin-top: 20px;
   animation: 2s ${rotate} linear infinite;
 `;
 
-const Section = ({ active }) => {
-  //{from_name}, {to_name}, message,
+const Contact = ({ active }) => {
   const serviceId = "service_znvjccb";
   const templateId = "template_55u84ye";
 
@@ -219,8 +183,6 @@ const Section = ({ active }) => {
     formState: { errors },
   } = useForm();
 
-  console.log(errors);
-
   const sendFeedback = (serviceId, templateId, variables) => {
     window.emailjs
       .send(serviceId, templateId, variables)
@@ -236,6 +198,7 @@ const Section = ({ active }) => {
   };
 
   const nodeRef = useRef(null);
+  const contactRef = useRef(null);
 
   useEffect(() => {
     active && !show && setShow(true);
@@ -254,12 +217,16 @@ const Section = ({ active }) => {
             <Heading>
               <h3>{`<Contact/>`}</h3>
             </Heading>
-            
-              <TransitionGroup component={null}>
-                <CSSTransition   key = {view} timeout={800} classNames="fadeContact">
 
-                    { view==='form' ? (
-                        <SectionCard>
+            <TransitionGroup component={null}>
+              <CSSTransition
+                nodeRef={contactRef}
+                key={view}
+                timeout={800}
+                classNames="fadeContact"
+              >
+                {view === "form" ? (
+                  <SectionCard>
                     <FormGroup>
                       <p>Want to find out more? Let's connect!</p>
                       <form onSubmit={handleSubmit(onSubmit)}>
@@ -305,17 +272,16 @@ const Section = ({ active }) => {
                         <Button type="submit">Send</Button>
                       </form>
                     </FormGroup>
-                    </SectionCard>
-                  ) :  (
-                    <ThanksDiv>
-                      <ThankYou>
-                        <h3>🙏 We'll be in touch soon!</h3>
-                      </ThankYou>
-                    </ThanksDiv>
-                  )}
-                </CSSTransition>
-              </TransitionGroup>
-            
+                  </SectionCard>
+                ) : (
+                  <ThanksDiv>
+                    <ThankYou>
+                      <h3>🙏 We'll be in touch soon!</h3>
+                    </ThankYou>
+                  </ThanksDiv>
+                )}
+              </CSSTransition>
+            </TransitionGroup>
           </AboutContainer>
         </div>
       </CSSTransition>
@@ -323,4 +289,4 @@ const Section = ({ active }) => {
   );
 };
 
-export default Section;
+export default Contact;
