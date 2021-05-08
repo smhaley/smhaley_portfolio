@@ -19,11 +19,10 @@ const Contact = ({ active }) => {
   const templateId = "template_55u84ye";
 
   const [show, setShow] = useState(false);
-  const [view, setView] = useState("form");
 
   const onSubmit = (data) => {
     console.log(data);
-    setView("thanks");
+    setView(content[1]);
 
     //   sendFeedback(serviceId, templateId, {
     //     from_name: name,
@@ -62,6 +61,63 @@ const Contact = ({ active }) => {
     active && !show && setShow(true);
   }, [active]);
 
+  const form = (
+    <SectionCard>
+      <FormGroup>
+        <p>Want to find out more? Let's connect!</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <InputDiv>
+            <Label>Name</Label>
+            <input
+              {...register("name", {
+                required: "Name required!",
+              })}
+            />
+            {errors.name && <Message>{errors.name.message}</Message>}
+          </InputDiv>
+          <InputDiv>
+            <Label>Email</Label>
+            <input
+              {...register("email", {
+                required: "Email required!",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Please check your email format!",
+                },
+              })}
+            />
+            {errors.email && <Message>{errors.email.message}</Message>}
+          </InputDiv>
+          <InputDiv>
+            <Label>Message</Label>
+            <textarea
+              rows={6}
+              resize={"vertical"}
+              {...register("message", {
+                required: "Message Required!",
+              })}
+            ></textarea>
+            {errors.message && <Message>{errors.message.message}</Message>}
+          </InputDiv>
+          <Button type="submit">Send</Button>
+        </form>
+      </FormGroup>
+    </SectionCard>
+  );
+
+  const thanks = (
+    <ThanksDiv>
+      <ThankYou>
+        <h3>🙏 We'll be in touch soon!</h3>
+      </ThankYou>
+    </ThanksDiv>
+  );
+
+  const content = [
+    { id: "form", content: form },
+    { id: "thanks", content: thanks },
+  ];
+  const [view, setView] = useState(content[0]);
   return (
     <>
       <CSSTransition
@@ -78,66 +134,14 @@ const Contact = ({ active }) => {
 
             <TransitionGroup component={null}>
               <CSSTransition
-                nodeRef={contactRef}
-                key={view}
+                // nodeRef={contactRef}
+                key={view.id}
                 timeout={800}
                 classNames="fadeContact"
               >
-                {view === "form" ? (
-                  <SectionCard>
-                    <FormGroup>
-                      <p>Want to find out more? Let's connect!</p>
-                      <form onSubmit={handleSubmit(onSubmit)}>
-                        <InputDiv>
-                          <Label>Name</Label>
-                          <input
-                            {...register("name", {
-                              required: "Name required!",
-                            })}
-                          />
-                          {errors.name && (
-                            <Message>{errors.name.message}</Message>
-                          )}
-                        </InputDiv>
-                        <InputDiv>
-                          <Label>Email</Label>
-                          <input
-                            {...register("email", {
-                              required: "Email required!",
-                              pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: "Please check your email format!",
-                              },
-                            })}
-                          />
-                          {errors.email && (
-                            <Message>{errors.email.message}</Message>
-                          )}
-                        </InputDiv>
-                        <InputDiv>
-                          <Label>Message</Label>
-                          <textarea
-                            rows={6}
-                            resize={"vertical"}
-                            {...register("message", {
-                              required: "Message Required!",
-                            })}
-                          ></textarea>
-                          {errors.message && (
-                            <Message>{errors.message.message}</Message>
-                          )}
-                        </InputDiv>
-                        <Button type="submit">Send</Button>
-                      </form>
-                    </FormGroup>
-                  </SectionCard>
-                ) : (
-                  <ThanksDiv>
-                    <ThankYou>
-                      <h3>🙏 We'll be in touch soon!</h3>
-                    </ThankYou>
-                  </ThanksDiv>
-                )}
+                  {/* <div ref = {contactRef}> */}
+                {view.content}
+                {/* </div> */}
               </CSSTransition>
             </TransitionGroup>
           </AboutContainer>

@@ -98,17 +98,16 @@ export const ThankYou = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 25px;
+  padding: 25px;
   text-align: center;
 
   h1 {
     font-size: clamp(1.5rem, 7vw, 2rem);
-    font-weight: 400;
+    font-weight: 300;
     color: ${(props) => props.theme.blue};
-  }T
-
-  h3 {
-    font-weight: 400;
+  }
+  T h3 {
+    font-weight: 100;
     margin-top: 0;
     font-size: clamp(1rem, 7vw, 2rem);
     color: ${(props) => props.theme.teal};

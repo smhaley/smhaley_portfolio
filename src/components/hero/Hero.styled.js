@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
 export const HeroContainer = styled.section`
-margin: 50px;
 display: flex;
+padding-left: 20px;
+justify-content: center;
 flex-direction: column;
-padding-top: 10%;
+padding-top: 150px;
+padding-left: 10%;
 transition: 0.1s ease-in-out;
 @media screen and (min-width: ${(props) => props.theme.md}) {
-  padding-left: 10%;
-  transition: 0.1s ease-in-out;
+  padding-left: 15%;
+  padding-top: 15%;
+  transition: 0.3s ease-in-out;
 }
 
 h4 {

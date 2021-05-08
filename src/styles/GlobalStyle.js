@@ -42,12 +42,12 @@ body {
     font-size: var(--fz-lg);
   }
 
-.fadeIn-appear {
+.fadeIn-enter {
   transform: translateX(-50px);
     opacity: 0;
   }
 
-.fadeIn-appear-active {
+.fadeIn-enter-active {
     opacity: 1;
     transform: translateX(0px);
     transition: opacity 800ms ease-in-out, transform 600ms ease-in-out;
@@ -72,20 +72,22 @@ body {
 
 
 .fadeContact-enter {
-  transform: translateY(20px);
+  transform: translateY(-20px);
   opacity: 0;
 }
 .fadeContact-enter-active {
   transform: translateY(0px);
   opacity: 1;
-  transition: all 300ms linear;
+  transition: all 500ms linear;
 }
 .fadeContact-exit {
+  transform: translateY(0px);
   opacity: 1;
 }
 .fadeContact-exit-active {
+  transform: translateY(20px);
   opacity: 0;
-  transition: opacity 500ms ease-in-out;
+  transition: all 500ms linear;
 }
 
 
