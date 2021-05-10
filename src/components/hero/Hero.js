@@ -29,7 +29,6 @@ const Hero = ({ handleContactScroll }) => {
             <CSSTransition
               key={index}
               nodeRef={nodes[index]}
-              // appear={true}
               timeout={4000}
               classNames={"fadeIn"}
             >

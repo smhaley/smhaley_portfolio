@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Navbar from "./components/nav/Navbar";
 import Hero from "./components/hero/Hero";
 import ProjectContainer from "./components/project/ProjectContainer";
@@ -41,42 +41,45 @@ function App() {
     });
   };
 
+  const content = [
+    {
+      id: "Hero",
+      ref: refs.Hero,
+      section: <Hero handleContactScroll={() => handleScroll("Contact")} />,
+    },
+
+    {
+      id: "About",
+      ref: refs.About,
+      section: <Section active={"About" === active} />,
+    },
+    {
+      id: "Work",
+      ref: refs.Work,
+      section: <ProjectContainer active={"Work" === active} />,
+    },
+    {
+      id: "Contact",
+      ref: refs.Contact,
+      section: <Contact active={"Contact" === active} />,
+    },
+  ];
+
   return (
     <>
       <AppBody>
         <Navbar active={active} handleScroll={handleScroll} />
         <AppContainer>
-          <SectionContainer
-            activeHandler={activeHandler}
-            ref={refs["Hero"]}
-            index={"Hero"}
-          >
-            <Hero handleContactScroll={() => handleScroll("Contact")} />
-          </SectionContainer>
-
-          <SectionContainer
-            activeHandler={activeHandler}
-            ref={refs["About"]}
-            index={"About"}
-          >
-            <Section active={"About" === active} />
-          </SectionContainer>
-
-          <SectionContainer
-            activeHandler={activeHandler}
-            ref={refs["Work"]}
-            index={"Work"}
-          >
-            <ProjectContainer active={"Work" === active} />
-          </SectionContainer>
-
-          <SectionContainer
-            activeHandler={activeHandler}
-            ref={refs["Contact"]}
-            index={"Contact"}
-          >
-            <Contact active={"Contact" === active} />
-          </SectionContainer>
+          {content.map((value) => (
+            <SectionContainer
+              activeHandler={activeHandler}
+              ref={value.ref}
+              index={value.id}
+              key={value.id}
+            >
+              {value.section}
+            </SectionContainer>
+          ))}
         </AppContainer>
         <Footer />
       </AppBody>

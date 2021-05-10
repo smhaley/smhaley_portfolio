@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 
-export const AboutContainer = styled.section`
+export const ContactContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -99,7 +99,6 @@ export const ThankYou = styled.div`
   justify-content: center;
   align-items: center;
   padding: 25px;
-  text-align: center;
 
   h1 {
     font-size: clamp(1.5rem, 7vw, 2rem);

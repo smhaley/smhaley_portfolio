@@ -14,7 +14,7 @@ const ProjectContainer = ({ active }) => {
 
   useEffect(() => {
     active && !show && setShow(true);
-  }, [active]);
+  }, [active, show]);
 
   return (
     <>

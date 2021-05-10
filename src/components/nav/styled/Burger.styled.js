@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { respondTo } from "../../../styles/mixins";
 
 export const StyledBurger = styled.button`
   position: relative;

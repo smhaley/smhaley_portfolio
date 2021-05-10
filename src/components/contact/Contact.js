@@ -1,20 +1,30 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Button } from "../../styles/common/Buttons";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { Heading } from "../../styles/common/generic";
+import { Button } from "../../styles/common/Buttons";
 import {
-  AboutContainer,
+  ContactContainer,
+  ThanksDiv,
+  ThankYou,
   SectionCard,
   FormGroup,
   Label,
   Message,
   InputDiv,
-  ThanksDiv,
-  ThankYou,
 } from "./Contact.styled";
 
 const Contact = ({ active }) => {
+  const nodeRef = useRef(null);
+
+  const formRef = useRef(null);
+  const thanksRef = useRef(null);
+
+  const content = [
+    { id: "form", ref: formRef },
+    { id: "thanks", ref: thanksRef },
+  ];
+
   const serviceId = "service_znvjccb";
   const templateId = "template_55u84ye";
 
@@ -36,7 +46,6 @@ const Contact = ({ active }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -54,70 +63,12 @@ const Contact = ({ active }) => {
       );
   };
 
-  const nodeRef = useRef(null);
-  const contactRef = useRef(null);
+  const [view, setView] = useState(content[0]);
 
   useEffect(() => {
     active && !show && setShow(true);
   }, [active]);
 
-  const form = (
-    <SectionCard>
-      <FormGroup>
-        <p>Want to find out more? Let's connect!</p>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <InputDiv>
-            <Label>Name</Label>
-            <input
-              {...register("name", {
-                required: "Name required!",
-              })}
-            />
-            {errors.name && <Message>{errors.name.message}</Message>}
-          </InputDiv>
-          <InputDiv>
-            <Label>Email</Label>
-            <input
-              {...register("email", {
-                required: "Email required!",
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Please check your email format!",
-                },
-              })}
-            />
-            {errors.email && <Message>{errors.email.message}</Message>}
-          </InputDiv>
-          <InputDiv>
-            <Label>Message</Label>
-            <textarea
-              rows={6}
-              resize={"vertical"}
-              {...register("message", {
-                required: "Message Required!",
-              })}
-            ></textarea>
-            {errors.message && <Message>{errors.message.message}</Message>}
-          </InputDiv>
-          <Button type="submit">Send</Button>
-        </form>
-      </FormGroup>
-    </SectionCard>
-  );
-
-  const thanks = (
-    <ThanksDiv>
-      <ThankYou>
-        <h3>🙏 We'll be in touch soon!</h3>
-      </ThankYou>
-    </ThanksDiv>
-  );
-
-  const content = [
-    { id: "form", content: form },
-    { id: "thanks", content: thanks },
-  ];
-  const [view, setView] = useState(content[0]);
   return (
     <>
       <CSSTransition
@@ -127,24 +78,75 @@ const Contact = ({ active }) => {
         classNames="fade"
       >
         <div ref={nodeRef}>
-          <AboutContainer show={show}>
+          <ContactContainer show={show}>
             <Heading>
               <h3>{`<Contact/>`}</h3>
             </Heading>
-
-            <TransitionGroup component={null}>
+            <SwitchTransition mode={"out-in"}>
               <CSSTransition
-                // nodeRef={contactRef}
+                nodeRef={view.ref}
                 key={view.id}
-                timeout={800}
+                timeout={600}
                 classNames="fadeContact"
               >
-                  {/* <div ref = {contactRef}> */}
-                {view.content}
-                {/* </div> */}
+                {view.id === "form" ? (
+                  <SectionCard ref={formRef}>
+                    <FormGroup>
+                      <p>Want to find out more? Let's connect!</p>
+                      <form onSubmit={handleSubmit(onSubmit)}>
+                        <InputDiv>
+                          <Label>Name</Label>
+                          <input
+                            {...register("name", {
+                              required: "Name required!",
+                            })}
+                          />
+                          {errors.name && (
+                            <Message>{errors.name.message}</Message>
+                          )}
+                        </InputDiv>
+                        <InputDiv>
+                          <Label>Email</Label>
+                          <input
+                            {...register("email", {
+                              required: "Email required!",
+                              pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Please check your email format!",
+                              },
+                            })}
+                          />
+                          {errors.email && (
+                            <Message>{errors.email.message}</Message>
+                          )}
+                        </InputDiv>
+                        <InputDiv>
+                          <Label>Message</Label>
+                          <textarea
+                            rows={6}
+                            resize={"vertical"}
+                            {...register("message", {
+                              required: "Message Required!",
+                            })}
+                          ></textarea>
+                          {errors.message && (
+                            <Message>{errors.message.message}</Message>
+                          )}
+                        </InputDiv>
+                        <Button type="submit">Send</Button>
+                      </form>
+                    </FormGroup>
+                  </SectionCard>
+                ) : (
+                  <ThanksDiv ref={thanksRef}>
+                    <ThankYou>
+                      <h3>🙏 We'll be in touch soon!</h3>
+                    </ThankYou>
+                  </ThanksDiv>
+                )}
               </CSSTransition>
-            </TransitionGroup>
-          </AboutContainer>
+            </SwitchTransition>
+          </ContactContainer>
         </div>
       </CSSTransition>
     </>

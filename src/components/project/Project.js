@@ -25,25 +25,25 @@ const Project = ({ content, image }) => {
   } = content;
 
   const git = (
-    <a href={gitLink} target="_blank">
+    <a href={gitLink} target="_blank" rel="noreferrer">
       <GitIcon />
     </a>
   );
   const goTo = (
-    <a href={appLink} target="_blank">
+    <a href={appLink} target="_blank" rel="noreferrer">
       <ExtLink />
     </a>
   );
 
   const dl = (
-    <a href={dlLink} target="_blank">
+    <a href={dlLink} target="_blank" rel="noreferrer">
       <DlLink />
     </a>
   );
 
   const projImg = (
-    <a href={appLink} target="_blank">
-      <img src={image}></img>
+    <a href={appLink} target="_blank" rel="noreferrer">
+      <img src={image} alt='site screenshot'></img>
     </a>
   );
 

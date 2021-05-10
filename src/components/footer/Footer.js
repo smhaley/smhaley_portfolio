@@ -11,12 +11,12 @@ const Footer = () => {
     </h5>
   );
   const gh = (
-    <a href={aboutContent.linkedIn} target="_blank">
+    <a href={aboutContent.linkedIn} target="_blank" rel="noreferrer">
       <LinkedIn />
     </a>
   );
   const linkedIn = (
-    <a href={aboutContent.github}>
+    <a href={aboutContent.github} target="_blank" rel="noreferrer">
       <GitIcon />
     </a>
   );

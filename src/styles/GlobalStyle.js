@@ -78,7 +78,7 @@ body {
 .fadeContact-enter-active {
   transform: translateY(0px);
   opacity: 1;
-  transition: all 500ms linear;
+  transition: all 300ms ease-in;
 }
 .fadeContact-exit {
   transform: translateY(0px);
@@ -87,7 +87,7 @@ body {
 .fadeContact-exit-active {
   transform: translateY(20px);
   opacity: 0;
-  transition: all 500ms linear;
+  transition: all 300ms ease-in-out;
 }
 
 

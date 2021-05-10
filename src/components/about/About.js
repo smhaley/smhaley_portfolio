@@ -23,10 +23,10 @@ const About = ({ active }) => {
   const four = <p>{aboutContent.current}</p>;
   const five = (
     <div>
-      <a href={aboutContent.linkedIn} target="_blank">
+      <a href={aboutContent.linkedIn} target="_blank" rel="noreferrer">
         <LinkedIn />
       </a>
-      <a href={aboutContent.github}>
+      <a href={aboutContent.github} target="_blank" rel="noreferrer">
         <GitIcon />
       </a>
     </div>
@@ -54,7 +54,7 @@ const About = ({ active }) => {
 
   useEffect(() => {
     active && !show && setShow(true);
-  }, [active]);
+  }, [active, show]);
 
   return (
     <>
