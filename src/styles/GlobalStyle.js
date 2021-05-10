@@ -3,13 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-  --green: #5e5656;
   --blue: #3a435c;
-  --pink: palevioletred;
-  --white: #e6f1ff;
-  --grey: #dadee8;
-  --green: rgb(24, 236, 151);
-  --green-tint: rgba(100, 255, 218, 0.1);
   --font-sans: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
   --font-xl: 5rem, 

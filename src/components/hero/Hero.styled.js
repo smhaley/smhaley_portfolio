@@ -10,7 +10,7 @@ padding-left: 10%;
 transition: 0.1s ease-in-out;
 @media screen and (min-width: ${(props) => props.theme.md}) {
   padding-left: 15%;
-  padding-top: 15%;
+  /* padding-top: 20%; */
   transition: 0.3s ease-in-out;
 }
 
