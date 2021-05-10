@@ -16,42 +16,35 @@ export const useOnClickOutside = (ref, handler) => {
 };
 
 export const useSideNavMediaClose = (position, handler) => {
-  useEffect(
-    () => {
-      const x = window.matchMedia(`(min-width: ${position})`);
+  useEffect(() => {
+    const x = window.matchMedia(`(min-width: ${position})`);
 
-      const listener = (x) => {
-        if (x.matches) {
-          handler();
-        } else {
-          return;
-        }
-      };
-      x.addEventListener("change", listener);
-      return () => {
-        x.addEventListener("change", listener);
-      };
-    },
-    [handler,
-    position]
-  );
+    const listener = (x) => {
+      if (x.matches) {
+        handler();
+      } else {
+        return;
+      }
+    };
+    
+    x.addEventListener("change", listener);
+    return () => {
+      x.removeEventListener("change", listener);
+    };
+  }, [handler, position]);
 };
 
-export const  useIntersectionObserver = (
+export const useIntersectionObserver = (
   elementRef,
 
-  {
-    threshold = 0,
-    rootMargin = "-50% 0px -50% 0px",
-    freezeOnceVisible = false,
-  }
-)=> {
+  { threshold = 0, rootMargin = "-50% 0px -50% 0px", freezeOnceVisible = false }
+) => {
   const [entry, setEntry] = useState();
 
-  let frozen
-  if (entry){
-  frozen = entry.isIntersecting && freezeOnceVisible;
-}
+  let frozen;
+  if (entry) {
+    frozen = entry.isIntersecting && freezeOnceVisible;
+  }
   const updateEntry = ([entry]) => {
     setEntry(entry);
   };
@@ -70,4 +63,4 @@ export const  useIntersectionObserver = (
   }, [elementRef, threshold, rootMargin, frozen]);
 
   return entry;
-}
+};
