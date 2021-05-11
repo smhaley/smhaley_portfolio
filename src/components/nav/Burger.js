@@ -1,6 +1,6 @@
-import React from 'react';
-import { StyledBurger } from './styled/Burger.styled';
-import { bool, func } from 'prop-types';
+import React from "react";
+import { StyledBurger } from "./styled/Burger.styled";
+import { bool, func } from "prop-types";
 
 const Burger = ({ open, setOpen }) => {
   return (
@@ -9,8 +9,8 @@ const Burger = ({ open, setOpen }) => {
       <div />
       <div />
     </StyledBurger>
-  )
-}
+  );
+};
 
 Burger.propTypes = {
   open: bool.isRequired,

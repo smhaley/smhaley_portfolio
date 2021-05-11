@@ -37,7 +37,6 @@ const Contact = ({ active }) => {
       message: data.message,
       reply_to: data.email,
     });
-;
   };
 
   const {

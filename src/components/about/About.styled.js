@@ -1,7 +1,5 @@
-
 import styled, { css } from "styled-components";
 import { Button } from "../../styles/common/Buttons";
-
 
 export const AboutContainer = styled.section`
   display: flex;

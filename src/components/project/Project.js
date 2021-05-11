@@ -12,7 +12,6 @@ import {
   ListItem,
 } from "./Project.styled";
 
-
 const Project = ({ content, image }) => {
   const {
     heading,
@@ -43,7 +42,7 @@ const Project = ({ content, image }) => {
 
   const projImg = (
     <a href={appLink} target="_blank" rel="noreferrer">
-      <img src={image} alt='site screenshot'></img>
+      <img src={image} alt="site screenshot"></img>
     </a>
   );
 

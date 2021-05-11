@@ -8,12 +8,12 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme} >
-    <GlobalStyle />
-    <App />
+  <>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <App />
     </ThemeProvider>
-  </React.StrictMode>,
+  </>,
   document.getElementById("root")
 );
 

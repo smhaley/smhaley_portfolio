@@ -23,7 +23,7 @@ const Footer = () => {
   );
   const branch = (
     <a href={siteLink} target="_blank" rel="noreferrer">
-      < GitBranch />
+      <GitBranch />
     </a>
   );
 

@@ -26,7 +26,7 @@ export const useSideNavMediaClose = (position, handler) => {
         return;
       }
     };
-    
+
     x.addEventListener("change", listener);
     return () => {
       x.removeEventListener("change", listener);
