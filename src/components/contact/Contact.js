@@ -95,7 +95,7 @@ const Contact = ({ active }) => {
                       <p>Want to find out more? Let's connect!</p>
                       <form onSubmit={handleSubmit(onSubmit)}>
                         <InputDiv>
-                          <Label>Name</Label>
+                          <Label aria-label="Name">Name</Label>
                           <input
                             {...register("name", {
                               required: "Name required!",
@@ -106,7 +106,7 @@ const Contact = ({ active }) => {
                           )}
                         </InputDiv>
                         <InputDiv>
-                          <Label>Email</Label>
+                          <Label aria-label="Email">Email</Label>
                           <input
                             {...register("email", {
                               required: "Email required!",
@@ -121,7 +121,7 @@ const Contact = ({ active }) => {
                           )}
                         </InputDiv>
                         <InputDiv>
-                          <Label>Message</Label>
+                          <Label aria-label="Message">Message</Label>
                           <textarea
                             rows={6}
                             resize={"vertical"}
@@ -133,7 +133,9 @@ const Contact = ({ active }) => {
                             <Message>{errors.message.message}</Message>
                           )}
                         </InputDiv>
-                        <Button type="submit">Send</Button>
+                        <Button type="submit" aria-label="send">
+                          Send
+                        </Button>
                       </form>
                     </FormGroup>
                   </SectionCard>

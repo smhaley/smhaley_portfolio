@@ -1,5 +1,4 @@
 export const theme = {
-
   xs: "480px",
   sm: "768px",
   md: "992px",
@@ -9,6 +8,7 @@ export const theme = {
   teal: "#76b4bd",
   navy: "#58668b",
   darkNavy: "#3a435c",
+  darkNavyHover: "rgb(58,67,92, .3)",
   veryDark: "rgb(46, 53, 71)",
   veryDarkTrans: "rgb(46, 53, 71, .85)",
   green: "rgb(85, 189, 142)",
@@ -16,4 +16,3 @@ export const theme = {
   lightGreen: "#7ef7c1",
   grey: "#d5d8de",
 };
-

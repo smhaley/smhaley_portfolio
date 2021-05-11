@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../../styles/common/Buttons";
 
 export const StyledMenu = styled.nav`
   display: flex;
@@ -48,7 +49,7 @@ export const StyledMenu = styled.nav`
   }
 `;
 
-export const MenuButton = styled.button`
+export const MenuLink = styled.button`
   background: none;
   border: none;
   margin: 0;
@@ -65,5 +66,13 @@ export const MenuButton = styled.button`
 
   &:hover {
     color: ${(props) => props.theme.navy};
+  }
+`;
+
+export const MenuBtn = styled(Button)`
+  color: ${(props) => props.theme.darkNavy};
+  border: 1px solid ${(props) => props.theme.darkNavy};
+  &:active {
+    background-color: ${(props) => props.theme.darkNavyHover};
   }
 `;

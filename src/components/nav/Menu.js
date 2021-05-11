@@ -1,9 +1,11 @@
 import React, { useLayoutEffect } from "react";
-import { StyledMenu, MenuButton } from "./styled/Menu.styled";
+import { StyledMenu, MenuLink, MenuBtn } from "./styled/Menu.styled";
 import { bool } from "prop-types";
 
 const Menu = ({ open, handleMenuClick }) => {
   const options = ["About", "Work", "Contact"];
+
+  const navButton = <MenuBtn>Resume</MenuBtn>;
 
   useLayoutEffect(() => {
     if (open) {
@@ -16,10 +18,11 @@ const Menu = ({ open, handleMenuClick }) => {
   return (
     <StyledMenu open={open}>
       {options.map((item) => (
-        <MenuButton key={item} onClick={() => handleMenuClick(item)}>
+        <MenuLink key={item} onClick={() => handleMenuClick(item)}>
           {item}
-        </MenuButton>
+        </MenuLink>
       ))}
+      {navButton}
     </StyledMenu>
   );
 };
