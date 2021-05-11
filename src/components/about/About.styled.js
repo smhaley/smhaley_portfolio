@@ -27,7 +27,7 @@ export const SectionCard = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 3px;
-  box-shadow: 8px 4px 8px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   max-width: 550px;
   @media screen and (min-width: ${(props) => props.theme.lg}) {

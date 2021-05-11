@@ -15,7 +15,7 @@ export const ContactContainer = styled.section`
 export const SectionCard = styled.div`
   width: 90%;
   border-radius: 3px;
-  box-shadow: 8px 4px 8px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   @media screen and (min-width: ${(props) => props.theme.sm}) {
     width: 70%;
