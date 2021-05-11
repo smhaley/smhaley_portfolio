@@ -37,14 +37,14 @@ body {
   }
 
 .fadeIn-enter {
-  transform: translateX(-50px);
+  transform: translateX(-100px);
     opacity: 0;
   }
 
 .fadeIn-enter-active {
     opacity: 1;
     transform: translateX(0px);
-    transition: opacity 800ms ease-in-out, transform 600ms ease-in-out;
+    transition: opacity 800ms ease-in-out, transform 950ms ease-in-out;
   }
 
 .fade-enter {

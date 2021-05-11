@@ -29,13 +29,13 @@ const Hero = ({ handleContactScroll }) => {
             <CSSTransition
               key={index}
               nodeRef={nodes[index]}
-              timeout={4000}
+              timeout={5000}
               classNames={"fadeIn"}
             >
               <div
                 key={index}
                 ref={nodes[index]}
-                style={{ transitionDelay: `${index * 2 + 1}00ms` }}
+                style={{ transitionDelay: `${index * 5 + 1}00ms` }}
               >
                 {item}
               </div>

@@ -31,16 +31,13 @@ const Contact = ({ active }) => {
   const [show, setShow] = useState(false);
 
   const onSubmit = (data) => {
-    console.log(data);
     setView(content[1]);
-
-    //   sendFeedback(serviceId, templateId, {
-    //     from_name: name,
-    //     message: message,
-    //     reply_to: email,
-    //   });
-    // r.target.reset();
-    // data.target.reset();
+    sendFeedback(serviceId, templateId, {
+      from_name: data.name,
+      message: data.message,
+      reply_to: data.email,
+    });
+;
   };
 
   const {

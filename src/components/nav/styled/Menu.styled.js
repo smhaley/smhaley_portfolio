@@ -53,7 +53,6 @@ export const MenuLink = styled.button`
   background: none;
   border: none;
   margin: 0;
-  /* padding:10px;/\ */
   cursor: pointer;
   font-size: 1.25rem;
   text-transform: uppercase;
@@ -70,6 +69,8 @@ export const MenuLink = styled.button`
 `;
 
 export const MenuBtn = styled(Button)`
+  margin-top: 2em;
+  margin-right:15px;
   color: ${(props) => props.theme.darkNavy};
   border: 1px solid ${(props) => props.theme.darkNavy};
   &:active {
