@@ -1,7 +1,8 @@
 import React from "react";
 import { ReactComponent as GitIcon } from "../../icons/github.svg";
 import { ReactComponent as LinkedIn } from "../../icons/linkedin.svg";
-import { aboutContent } from "../about/aboutContent";
+import { ReactComponent as GitBranch } from "../../icons/git-branch.svg";
+import { aboutContent, siteLink } from "../content";
 import { FooterDiv, FooterContent } from "./Footer.styled";
 
 const Footer = () => {
@@ -20,8 +21,13 @@ const Footer = () => {
       <GitIcon />
     </a>
   );
+  const branch = (
+    <a href={siteLink} target="_blank" rel="noreferrer">
+      < GitBranch />
+    </a>
+  );
 
-  const content = [built, gh, linkedIn];
+  const content = [built, gh, branch, linkedIn];
   return (
     <FooterDiv>
       <FooterContent>

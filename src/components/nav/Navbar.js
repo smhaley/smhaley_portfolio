@@ -5,6 +5,7 @@ import { useOnClickOutside, useSideNavMediaClose } from "../hooks";
 import { Nav, NavLink, NavBtn, NavMenu, NavLogo } from "./styled/Navbar.styled";
 import { ReactComponent as Logo } from "../../icons/logo.svg";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { resume } from "../content";
 
 const Navbar = ({ active, handleScroll }) => {
   const node = useRef();
@@ -54,7 +55,11 @@ const Navbar = ({ active, handleScroll }) => {
     </div>
   );
 
-  const navButton = <NavBtn>Resume</NavBtn>;
+  const navButton = (
+    <a href={resume} target="_blank" rel="noreferrer">
+      <NavBtn>Resume</NavBtn>
+    </a>
+  );
 
   const navItems = ["About", "Work", "Contact", navButton];
   const navMain = [logo, burger];
@@ -94,15 +99,21 @@ const Navbar = ({ active, handleScroll }) => {
                 timeout={1200}
                 classNames={"fadeNav"}
               >
-                <NavLink
-                  key={item}
-                  ref={nodes[index]}
-                  active={item === active}
-                  onClick={() => handleScroll(item)}
-                  activeStyle
-                >
-                  {item}
-                </NavLink>
+                {typeof item === "string" ? (
+                  <NavLink
+                    key={item}
+                    ref={nodes[index]}
+                    active={item === active}
+                    onClick={() => handleScroll(item)}
+                    activeStyle
+                  >
+                    {item}
+                  </NavLink>
+                ) : (
+                  <div ref={nodes[index]} key={item}>
+                    {item}
+                  </div>
+                )}
               </CSSTransition>
             ))}
           </TransitionGroup>

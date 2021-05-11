@@ -3,7 +3,7 @@ import { CSSTransition } from "react-transition-group";
 import { ReactComponent as GitIcon } from "../../icons/github.svg";
 import { ReactComponent as LinkedIn } from "../../icons/linkedin.svg";
 import { Heading } from "../../styles/common/generic";
-import { aboutContent } from "./aboutContent";
+import { aboutContent, resume } from "../content";
 import {
   AboutContainer,
   SectionCard,
@@ -31,7 +31,11 @@ const About = ({ active }) => {
       </a>
     </div>
   );
-  const six = <Link>Resume</Link>;
+  const six = (
+    <a href={resume} target="_blank" rel="noreferrer">
+      <Link>Resume</Link>
+    </a>
+  );
 
   const stackOne = [
     "Javascript",

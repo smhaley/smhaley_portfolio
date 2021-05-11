@@ -69,8 +69,6 @@ export const MenuLink = styled.button`
 `;
 
 export const MenuBtn = styled(Button)`
-  margin-top: 2em;
-  margin-right:15px;
   color: ${(props) => props.theme.darkNavy};
   border: 1px solid ${(props) => props.theme.darkNavy};
   &:active {

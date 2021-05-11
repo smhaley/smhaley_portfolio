@@ -64,7 +64,7 @@ const Contact = ({ active }) => {
 
   useEffect(() => {
     active && !show && setShow(true);
-  }, [active]);
+  }, [active, show]);
 
   return (
     <>

@@ -15,7 +15,7 @@ const Hero = ({ handleContactScroll }) => {
   const nodes = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   useEffect(() => {
-    setTimeout(() => setMount(true), 400);
+    setTimeout(() => setMount(true), 300);
     return () => clearTimeout(setMount(true));
   });
 
