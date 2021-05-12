@@ -99,16 +99,17 @@ export const ThankYou = styled.div`
   justify-content: center;
   align-items: center;
   padding: 25px;
+  margin-top: 30px;
 
   h1 {
     font-size: clamp(1.5rem, 7vw, 2rem);
     font-weight: 300;
     color: ${(props) => props.theme.blue};
   }
-  T h3 {
-    font-weight: 100;
+  h3 {
+    font-weight: 400;
     margin-top: 0;
-    font-size: clamp(1rem, 7vw, 2rem);
+    font-size: clamp(1rem, 5vw, 2rem);
     color: ${(props) => props.theme.teal};
   }
 `;
@@ -125,7 +126,7 @@ export const rotate = keyframes`{
     }`;
 
 export const ThanksDiv = styled.div`
-  margin-top: 20px;
+  margin-top: 150px;
   @property --angle {
     syntax: "<angle>";
     initial-value: 0deg;
@@ -133,8 +134,8 @@ export const ThanksDiv = styled.div`
   }
 
   --angle: 0deg;
-  max-width: 50vmin;
-  max-height: 50vmin;
+  max-width: 90vmin;
+  max-height:60vmin;
   border: 2vmin solid;
   border-image: conic-gradient(
       from var(--angle),

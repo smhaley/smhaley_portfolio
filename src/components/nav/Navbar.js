@@ -15,7 +15,7 @@ const Navbar = ({ active, handleScroll }) => {
 
   const handleMenuClick = (item) => {
     setOpen(false);
-    setTimeout(()=>handleScroll(item), 200)
+    handleScroll(item)
   };
 
   const prevScrollY = useRef(0);

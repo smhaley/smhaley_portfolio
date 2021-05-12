@@ -6,11 +6,15 @@ export const HeroContainer = styled.section`
   justify-content: center;
   flex-direction: column;
   padding-top: 150px;
-  padding-left: 10%;
   transition: 0.1s ease-in-out;
+
+  @media screen and (min-width: ${(props) => props.theme.sm}) {
+    padding-left: 10%;
+    transition: 0.3s ease-in-out;
+  }
+
   @media screen and (min-width: ${(props) => props.theme.md}) {
     padding-left: 15%;
-    /* padding-top: 20%; */
     transition: 0.3s ease-in-out;
   }
 
@@ -20,8 +24,8 @@ export const HeroContainer = styled.section`
   }
 
   h1 {
-    font-size: clamp(2.6rem, 10vw, 5rem);
-    margin: 0 5px 0;
+    font-size: clamp(3rem, 10vw, 6rem);
+    margin: 0;
     white-space: nowrap;
     font-weight: 600;
     color: ${(props) => props.theme.blue};
