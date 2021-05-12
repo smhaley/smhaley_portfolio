@@ -80,11 +80,14 @@ export const Stack = styled.div`
 
 export const ListItem = styled.li`
   font-family: Consolas, monospace;
-
   padding-left: 2ch;
   padding-top: 1ch;
+  position: relative;
+  list-style-type: none;
 
-  ::marker {
+  &:before {
+    position: absolute;
+    left: 0;
     content: "▸";
     color: ${(props) => props.theme.green};
   }

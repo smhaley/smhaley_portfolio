@@ -91,24 +91,28 @@ export const ImgContainer = styled.div`
 `;
 
 export const ProjImg = styled.div`
-  background-color: ${(props) => props.theme.green};
+  /* background-color: ${(props) => props.theme.green}; */
+  /* background: linear-gradient(${(props) => props.theme.green}, ${(props) => props.theme.teal}); */
   border-radius: 7px;
   z-index: 0;
   max-width: 500px;
   margin-right: 0;
   margin-left: auto;
-  display: block;
+
+
   img {
-    border-radius: 7px;
+    background: linear-gradient(#e66465, #9198e5);
     height: 100%;
+    border-radius: 7px;
     width: 100%;
-    opacity: 0.5;
+    opacity: 0.7;
     transition: opacity 0.3s ease-in-out;
     @media screen and (min-width: ${(props) =>
         props.theme.xs}) and (max-width: ${(props) => props.theme.sm}) {
       opacity: 0.2;
     }
   }
+
   @media screen and (min-width: ${(props) =>
       props.theme.xs}) and (max-width: ${(props) => props.theme.sm}) {
     background-color: ${(props) => props.theme.veryDark};
@@ -137,10 +141,13 @@ export const ListItem = styled.li`
   padding-right: 50px;
   padding-left: 2ch;
   padding-top: 1ch;
+  position: relative;
+  list-style-type: none;
 
-  ::marker {
+  &:before {
+    position: absolute;
+    left: 0;
     content: "▸";
-    padding: 5px;
     color: ${(props) => props.theme.blue};
   }
 `;

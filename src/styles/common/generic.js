@@ -5,10 +5,10 @@ export const Heading = styled.div`
   h3 {
     font-weight: 300;
     font-family: Consolas, monospace;
-    font-size: 1rem;
+    font-size: 1.4rem;
     margin-bottom: 20px;
     @media screen and (min-width: ${(props) => props.theme.xs}) {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       &::before,
       &::after {
         display: inline-block;
@@ -16,7 +16,7 @@ export const Heading = styled.div`
         border-top: 0.05rem solid ${(props) => props.theme.blue};
         width: 2rem;
         margin: 0 1.5rem;
-        transform: translateY(-0.4rem);
+        transform: translateY(-0.45rem);
       }
     }
     @media screen and (min-width: ${(props) => props.theme.sm}) {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
@@ -15,10 +15,9 @@ export const useOnClickOutside = (ref, handler) => {
   }, [ref, handler]);
 };
 
-export const useSideNavMediaClose = (position, handler) => {
+export const useSideNavMediaClose = (position, handler, element = window) => {
+  const savedHandler = useRef();
   useEffect(() => {
-    const x = window.matchMedia(`(min-width: ${position})`);
-
     const listener = (x) => {
       if (x.matches) {
         handler();
@@ -26,10 +25,20 @@ export const useSideNavMediaClose = (position, handler) => {
         return;
       }
     };
+    savedHandler.current = listener;
+  }, [handler]);
 
-    x.addEventListener("change", listener);
+  useEffect(() => {
+    const isSupported = element && element.addEventListener;
+    if (!isSupported) return;
+
+    const x = element.matchMedia(`(min-width: ${position})`);
+
+    const eventListener = (event) => savedHandler.current(event);
+
+    x.addEventListener("change", eventListener);
     return () => {
-      x.removeEventListener("change", listener);
+      x.removeEventListener("change", eventListener);
     };
   }, [handler, position]);
 };
