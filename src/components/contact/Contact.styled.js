@@ -76,8 +76,9 @@ export const FormGroup = styled.div`
   }
 
   span {
-    font-weight:600;
-    color: ${props=>props.theme.green}
+    font-weight: 600;
+    margin-left: 10px;
+    color: ${(props) => props.theme.green};
   }
 `;
 
@@ -140,7 +141,7 @@ export const ThanksDiv = styled.div`
 
   --angle: 0deg;
   max-width: 90vmin;
-  max-height:60vmin;
+  max-height: 60vmin;
   border: 2vmin solid;
   border-image: conic-gradient(
       from var(--angle),

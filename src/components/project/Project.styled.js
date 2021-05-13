@@ -97,7 +97,6 @@ export const ProjImg = styled.div`
   margin-right: 0;
   margin-left: auto;
 
-
   img {
     background: linear-gradient(#e66465, #9198e5);
     height: 100%;
@@ -137,7 +136,7 @@ export const ProjStack = styled.ul`
 export const ListItem = styled.li`
   font-family: Consolas, monospace;
   padding-right: 50px;
-  padding-left: 2ch;
+  padding-left: 2.5ch;
   padding-top: 1ch;
   position: relative;
   list-style-type: none;
@@ -145,7 +144,7 @@ export const ListItem = styled.li`
   &:before {
     position: absolute;
     left: 0;
-    content: "￫";
+    content: "＊";
     color: ${(props) => props.theme.blue};
   }
 `;

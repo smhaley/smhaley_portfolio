@@ -5,7 +5,7 @@ export const HeroContainer = styled.section`
   padding-left: 20px;
   justify-content: center;
   flex-direction: column;
-  padding-top: 150px;
+  padding-top: 125px;
   transition: 0.1s ease-in-out;
 
   @media screen and (min-width: ${(props) => props.theme.sm}) {
@@ -33,7 +33,7 @@ export const HeroContainer = styled.section`
 
   h3 {
     font-weight: 500;
-    margin-top: 0;
+    margin-top: 15px;
     font-size: clamp(1rem, 5vw, 3rem);
     color: ${(props) => props.theme.teal};
   }

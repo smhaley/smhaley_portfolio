@@ -80,7 +80,7 @@ export const Stack = styled.div`
 
 export const ListItem = styled.li`
   font-family: Consolas, monospace;
-  padding-left: 2ch;
+  padding-left: 2.5ch;
   padding-top: 1ch;
   position: relative;
   list-style-type: none;
@@ -88,7 +88,7 @@ export const ListItem = styled.li`
   &:before {
     position: absolute;
     left: 0;
-    content: "￫";
+    content: "＊";
     color: ${(props) => props.theme.green};
   }
 `;
