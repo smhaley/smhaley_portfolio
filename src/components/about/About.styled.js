@@ -88,7 +88,7 @@ export const ListItem = styled.li`
   &:before {
     position: absolute;
     left: 0;
-    content: "▸";
+    content: "￫";
     color: ${(props) => props.theme.green};
   }
 `;

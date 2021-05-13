@@ -52,10 +52,7 @@ const Contact = ({ active }) => {
         console.log("Email successfully sent!");
       })
       .catch((err) =>
-        console.error(
-          "There has been an error.  Here some thoughts on the error that occured:",
-          err
-        )
+        console.error(err)
       );
   };
 
@@ -88,7 +85,8 @@ const Contact = ({ active }) => {
                 {view.id === "form" ? (
                   <SectionCard ref={formRef}>
                     <FormGroup>
-                      <p>Want to find out more? Let's connect!</p>
+                      <p>Want to find out more? <span> Let's connect!</span></p>
+                      
                       <form onSubmit={handleSubmit(onSubmit)}>
                         <InputDiv>
                           <Label aria-label="Name">Name</Label>

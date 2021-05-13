@@ -91,8 +91,6 @@ export const ImgContainer = styled.div`
 `;
 
 export const ProjImg = styled.div`
-  /* background-color: ${(props) => props.theme.green}; */
-  /* background: linear-gradient(${(props) => props.theme.green}, ${(props) => props.theme.teal}); */
   border-radius: 7px;
   z-index: 0;
   max-width: 500px;
@@ -147,7 +145,7 @@ export const ListItem = styled.li`
   &:before {
     position: absolute;
     left: 0;
-    content: "▸";
+    content: "￫";
     color: ${(props) => props.theme.blue};
   }
 `;

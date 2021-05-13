@@ -55,7 +55,7 @@ const Project = ({ content, image }) => {
         <Content>
           <h1>{heading}</h1>
           <ContentBlock>
-            <h5>{subHeading}</h5>
+            <h4>{subHeading}</h4>
             <p>{mainContent}</p>
           </ContentBlock>
           {git}

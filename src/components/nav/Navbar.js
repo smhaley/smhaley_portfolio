@@ -15,7 +15,7 @@ const Navbar = ({ active, handleScroll }) => {
 
   const handleMenuClick = (item) => {
     setOpen(false);
-    handleScroll(item)
+    handleScroll(item);
   };
 
   const prevScrollY = useRef(0);
@@ -61,7 +61,7 @@ const Navbar = ({ active, handleScroll }) => {
     </a>
   );
 
-  const navItems = ["About", "Work", "Contact", navButton];
+  const navItems = ["About", "Projects", "Contact", navButton];
   const navMain = [logo, burger];
 
   useEffect(() => {
@@ -75,14 +75,14 @@ const Navbar = ({ active, handleScroll }) => {
         <TransitionGroup component={null}>
           {navMain.map((item, index) => (
             <CSSTransition
-              key={index + 3}
+              key={index + "main"}
               in={true}
               nodeRef={nodesMain[index]}
               appear={true}
-              timeout={400}
+              timeout={500}
               classNames={"fadeLogo"}
             >
-              <div key={index + 3} ref={nodesMain[index]}>
+              <div key={index + "main"} ref={nodesMain[index]}>
                 {item}
               </div>
             </CSSTransition>
@@ -96,7 +96,7 @@ const Navbar = ({ active, handleScroll }) => {
                 in={true}
                 nodeRef={nodes[index]}
                 appear={true}
-                timeout={1200}
+                timeout={600}
                 classNames={"fadeNav"}
               >
                 {typeof item === "string" ? (

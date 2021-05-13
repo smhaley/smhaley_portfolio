@@ -27,7 +27,7 @@ const ProjectContainer = ({ active }) => {
         <div ref={nodeRef}>
           <ProjContainer show={show}>
             <Heading>
-              <h3>{`<RecentWork/>`}</h3>
+              <h3>{`<RecentProjects/>`}</h3>
             </Heading>
 
             <Project content={pepContent} image={pep} />

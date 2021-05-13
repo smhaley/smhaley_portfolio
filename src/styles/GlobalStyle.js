@@ -3,20 +3,10 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-  --blue: #3a435c;
-  --font-sans: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-  --font-xl: 5rem, 
-  --font-l: 3rem,
-  --font-m: 1.5rem, 
-  --font-s: 1rem,
-  --font-xs .8rem,
-  --fz-heading: 32px;
-  --border-radius: 4px;
-  --nav-height: 100px;
-  --nav-scroll-height: 70px;
-  --tab-height: 42px;
-  --tab-width: 120px;
+  --font-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  scrollbar-color: ${(props) => props.theme.green} rgb(46,54,69);
+  scrollbar-width: thin;
 }
 
 body {
@@ -26,15 +16,13 @@ body {
   overflow-x: hidden;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color:var(--blue);
-  color: #e6f1ff;
-  font-family: var(--font-sans);
-  font-size: var(--fz-xl);
+  background-color:${(props) => props.theme.darkNavy};
+  color: ${(props) => props.theme.white};
+  font-family: -apple-system, BlinkMacSystemFont, "Calibri", "Roboto", "Segoe UI", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;;
   line-height: 1.3;
   
-  @media (max-width: 480px) {
-    font-size: var(--fz-lg);
-  }
 
 .fadeIn-enter {
   transform: translateX(-100px);
@@ -106,8 +94,22 @@ body {
     transition: opacity 700ms ease-in-out;
   }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: ${(props) => props.theme.green}; 
+  border-radius: 10px;
+}
 
+::-webkit-scrollbar-thumb:hover {
+  background: ${(props) => props.theme.hoverGreen}; 
+}
 }
 
  `;

@@ -14,17 +14,17 @@ export const Nav = styled.nav`
   ${(props) =>
     props.scroll === "up" &&
     css`
-      height: var(--nav-scroll-height);
+      height: 70px;
       transform: translateY(0px);
       background-color: ${(props) => props.theme.veryDarkTrans};
-      box-shadow: 0 10px 30px -10px var(--navy-shadow);
+      box-shadow: 0 8px 10px -8px rgba(0, 0, 0, 0.3););
     `}
   ${(props) =>
     props.scroll === "down" &&
     css`
-      height: var(--nav-scroll-height);
-      transform: translateY(calc(var(--nav-scroll-height) * -1));
-      box-shadow: 0 10px 30px -10px var(--navy-shadow);
+      height: 70px;
+      transform: translateY(-70px);
+      box-shadow: 0 8px 10px -8px rgba(0, 0, 0, 0.3););
     `}
 `;
 

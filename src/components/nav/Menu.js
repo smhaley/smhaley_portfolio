@@ -2,8 +2,9 @@ import React, { useLayoutEffect } from "react";
 import { StyledMenu, MenuLink, MenuBtn } from "./styled/Menu.styled";
 import { bool } from "prop-types";
 import { resume } from "../content";
+
 const Menu = ({ open, handleMenuClick }) => {
-  const options = ["About", "Work", "Contact"];
+  const options = ["About", "Projects", "Contact"];
 
   const navButton = (
     <a href={resume} target="_blank" rel="noreferrer">

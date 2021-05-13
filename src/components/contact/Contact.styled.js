@@ -74,6 +74,11 @@ export const FormGroup = styled.div`
     color: ${(props) => props.theme.grey};
     padding-bottom: 15px;
   }
+
+  span {
+    font-weight:600;
+    color: ${props=>props.theme.green}
+  }
 `;
 
 export const Label = styled.label`

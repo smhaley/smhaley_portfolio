@@ -3,6 +3,7 @@ export const theme = {
   sm: "768px",
   md: "992px",
   lg: "1200px",
+  white:'#e6e7e8',
   light: "#ebf4f6",
   blue: "#bdeaee",
   teal: "#76b4bd",

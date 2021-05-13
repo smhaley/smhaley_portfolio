@@ -33,7 +33,7 @@ function App() {
   const refs = {
     Hero: useRef(),
     About: useRef(),
-    Work: useRef(),
+    Projects: useRef(),
     Contact: useRef(),
   };
 
@@ -59,9 +59,9 @@ function App() {
       section: <Section active={"About" === active} />,
     },
     {
-      id: "Work",
-      ref: refs.Work,
-      section: <ProjectContainer active={"Work" === active} />,
+      id: "Projects",
+      ref: refs.Projects,
+      section: <ProjectContainer active={"Projects" === active} />,
     },
     {
       id: "Contact",
