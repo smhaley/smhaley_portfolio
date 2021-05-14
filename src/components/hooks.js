@@ -40,7 +40,7 @@ export const useSideNavMediaClose = (position, handler, element = window) => {
     return () => {
       x.removeEventListener("change", eventListener);
     };
-  }, [handler, position]);
+  }, [handler, position,element]);
 };
 
 export const useIntersectionObserver = (
