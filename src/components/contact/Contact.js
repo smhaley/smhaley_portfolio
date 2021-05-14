@@ -89,8 +89,8 @@ const Contact = ({ active }) => {
                       
                       <form onSubmit={handleSubmit(onSubmit)}>
                         <InputDiv>
-                          <Label aria-label="Name">Name</Label>
-                          <input
+                          <Label htmlFor= 'name' aria-label="Name">Name</Label>
+                          <input id='name'
                             {...register("name", {
                               required: "Name required!",
                             })}
@@ -100,8 +100,8 @@ const Contact = ({ active }) => {
                           )}
                         </InputDiv>
                         <InputDiv>
-                          <Label aria-label="Email">Email</Label>
-                          <input
+                          <Label htmlFor='email' aria-label="Email">Email</Label>
+                          <input id='email'
                             {...register("email", {
                               required: "Email required!",
                               pattern: {
@@ -115,8 +115,9 @@ const Contact = ({ active }) => {
                           )}
                         </InputDiv>
                         <InputDiv>
-                          <Label aria-label="Message">Message</Label>
+                          <Label htmlFor='message' aria-label="Message">Message</Label>
                           <textarea
+                          id='message'
                             rows={6}
                             resize={"vertical"}
                             {...register("message", {
