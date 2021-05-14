@@ -96,7 +96,10 @@ export const ProjImg = styled.div`
   max-width: 500px;
   margin-right: 0;
   margin-left: auto;
-
+  @media screen and (min-width: ${(props) =>
+        props.theme.xs}){
+  margin-top: -50px;
+}
   img {
     background: linear-gradient(#e66465, #9198e5);
     height: 100%;
@@ -108,6 +111,7 @@ export const ProjImg = styled.div`
         props.theme.xs}) and (max-width: ${(props) => props.theme.sm}) {
       opacity: 0.2;
     }
+    
   }
 
   @media screen and (min-width: ${(props) =>
@@ -124,24 +128,25 @@ export const ContentBlock = styled.div`
   background-color: ${(props) => props.theme.veryDark};
   border-radius: 5px;
   padding: 10px;
+  max-width: 500px;
 `;
 
 export const ProjStack = styled.ul`
-  margin-left: -20px;
+  margin-left: -50px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   align-items: flex-start;
 `;
 
 export const ListItem = styled.li`
   font-family: Consolas, monospace;
-  padding-right: 50px;
-  padding-left: 2.5ch;
-  padding-top: 1ch;
+  padding-left: 1.5ch;
+  padding-top: 1.5ch;
   list-style-type: none;
 
   ::before {
-    content: "＊";
+    content: "⟡";
     color: ${(props) => props.theme.blue};
     border-radius: 1ch;
     padding-inline: 1ch;

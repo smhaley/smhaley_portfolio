@@ -85,7 +85,7 @@ export const ListItem = styled.li`
   list-style-type: none;
 
   ::before {
-    content: "＊";
+    content: "⟡";
     color: ${(props) => props.theme.green};
     border-radius: 1ch;
     padding-inline: 1ch;

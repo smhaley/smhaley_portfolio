@@ -60,6 +60,7 @@ const Project = ({ content, image }) => {
             ))}
           </ProjStack>
         </Content>
+
       </ProjCard>
     </>
   );

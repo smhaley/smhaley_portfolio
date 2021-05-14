@@ -71,8 +71,8 @@ export const FormGroup = styled.div`
   }
 
   p {
-    color: ${(props) => props.theme.grey};
     padding-bottom: 15px;
+    font-size: 1.1em;
   }
 
   span {

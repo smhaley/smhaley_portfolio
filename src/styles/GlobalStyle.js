@@ -13,13 +13,13 @@ body {
   margin: 0;
   width: 100%;
   min-height: 100%;
-  font-size: 1rem;
+  font-size: 1.1rem;
   overflow-x: hidden;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background-color:${(props) => props.theme.darkNavy};
   color: ${(props) => props.theme.white};
-  font-family: -apple-system, BlinkMacSystemFont, "Calibri", "Roboto", "Segoe UI", "Oxygen",
+  font-family: "Helvetica", "Calibre", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;;
   line-height: 1.3;

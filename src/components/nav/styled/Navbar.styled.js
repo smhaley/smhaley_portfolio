@@ -36,7 +36,7 @@ export const NavLink = styled.li`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-  font-size: 0.9em;
+  font-size: 1em;
 
   &:hover {
     color: ${(props) => props.theme.lightGreen};
