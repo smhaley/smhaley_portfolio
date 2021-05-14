@@ -138,13 +138,13 @@ export const ListItem = styled.li`
   padding-right: 50px;
   padding-left: 2.5ch;
   padding-top: 1ch;
-  position: relative;
   list-style-type: none;
 
-  &:before {
-    position: absolute;
-    left: 0;
+  ::before {
     content: "＊";
     color: ${(props) => props.theme.blue};
+    border-radius: 1ch;
+    padding-inline: 1ch;
+    margin-inline-end: 1ch;
   }
 `;

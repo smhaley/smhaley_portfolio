@@ -13,6 +13,7 @@ body {
   margin: 0;
   width: 100%;
   min-height: 100%;
+  font-size: 1rem;
   overflow-x: hidden;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

@@ -26,12 +26,13 @@ export const SectionCard = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  justify-content: center;
   border-radius: 3px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
-  max-width: 550px;
+  max-width: 500px;
   @media screen and (min-width: ${(props) => props.theme.lg}) {
-    max-width: 900px;
+    max-width: 950px;
   }
 `;
 
@@ -40,7 +41,7 @@ export const AboutContent = styled.div`
     color: ${(props) => props.theme.blue};
   }
   padding: 15px;
-  max-width: 525px;
+  max-width: 500px;
 `;
 
 export const AboutStack = styled.ul`
@@ -52,15 +53,10 @@ export const AboutStack = styled.ul`
   column-count: 2;
   column-gap: 20px;
 
-  @media screen and (min-width: ${(props) => props.theme.xs}) {
+  @media screen and (min-width: ${(props) => props.theme.sm}) {
     -moz-column-count: 3;
     -webkit-column-count: 3;
     column-count: 3;
-  }
-  @media screen and (min-width: ${(props) => props.theme.sm}) {
-    -moz-column-count: 4;
-    -webkit-column-count: 4;
-    column-count: 4;
   }
   @media screen and (min-width: ${(props) => props.theme.lg}) {
     -moz-column-count: 2;
@@ -70,26 +66,30 @@ export const AboutStack = styled.ul`
 `;
 
 export const Stack = styled.div`
-  padding-left: 20px;
   font-family: Consolas, monospace;
   font-weight: 300;
+  margin-right: auto;
+
   @media screen and (min-width: ${(props) => props.theme.lg}) {
-    margin-top: -52px;
+    margin-top: -84px;
+  }
+  h5 {
+    padding-left: 25px;
   }
 `;
 
 export const ListItem = styled.li`
   font-family: Consolas, monospace;
-  padding-left: 2.5ch;
+  padding-left: 2ch;
   padding-top: 1ch;
-  position: relative;
   list-style-type: none;
 
-  &:before {
-    position: absolute;
-    left: 0;
+  ::before {
     content: "＊";
     color: ${(props) => props.theme.green};
+    border-radius: 1ch;
+    padding-inline: 1ch;
+    margin-inline-end: 1ch;
   }
 `;
 

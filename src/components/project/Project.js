@@ -13,15 +13,8 @@ import {
 } from "./Project.styled";
 
 const Project = ({ content, image }) => {
-  const {
-    heading,
-    subHeading,
-    mainContent,
-    gitLink,
-    appLink,
-    stack,
-    dlLink,
-  } = content;
+  const { heading, subHeading, mainContent, gitLink, appLink, stack, dlLink } =
+    content;
 
   const git = (
     <a href={gitLink} target="_blank" rel="noreferrer">
