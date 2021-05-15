@@ -33,7 +33,7 @@ body {
   .fadeIn-enter-active {
       opacity: 1;
       transform: translateX(0px);
-      transition: opacity 800ms ease-in-out, transform 1050ms ease-in-out;
+      transition: opacity 800ms ease-in-out, transform 500ms ease-in-out;
     }
 
   .fade-enter {

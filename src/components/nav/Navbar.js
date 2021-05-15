@@ -61,7 +61,7 @@ const Navbar = ({ active, handleScroll }) => {
     </a>
   );
 
-  const navItems = ["About", "Projects", "Contact", navButton];
+  const navItems = ["About", "Projects", "Contact"];
   const navMain = [logo, burger];
 
   useEffect(() => {
@@ -99,23 +99,26 @@ const Navbar = ({ active, handleScroll }) => {
                 timeout={600}
                 classNames={"fadeNav"}
               >
-                {typeof item === "string" ? (
-                  <NavLink
-                    key={item}
-                    ref={nodes[index]}
-                    active={item === active}
-                    onClick={() => handleScroll(item)}
-                    activeStyle
-                  >
-                    {item}
-                  </NavLink>
-                ) : (
-                  <div ref={nodes[index]} key={item}>
-                    {item}
-                  </div>
-                )}
+                <NavLink
+                  key={item}
+                  ref={nodes[index]}
+                  active={item === active}
+                  onClick={() => handleScroll(item)}
+                  activeStyle
+                >
+                  {item}
+                </NavLink>
               </CSSTransition>
             ))}
+            <CSSTransition
+              in={true}
+              nodeRef={nodesMain[3]}
+              appear={true}
+              timeout={500}
+              classNames={"fadeLogo"}
+            >
+              <div ref={nodesMain[3]}>{navButton}</div>
+            </CSSTransition>
           </TransitionGroup>
         </NavMenu>
       </Nav>

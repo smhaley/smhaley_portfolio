@@ -35,7 +35,7 @@ const Hero = ({ handleContactScroll }) => {
                   <div
                     key={index}
                     ref={nodes[index]}
-                    style={{ transitionDelay: `${index * 5 + 1}00ms` }}
+                    style={{ transitionDelay: `${index * 1 + 1}00ms` }}
                   >
                     {item}
                   </div>
