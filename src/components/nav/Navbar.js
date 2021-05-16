@@ -2,7 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import Burger from "./Burger";
 import Menu from "./Menu";
 import { useOnClickOutside, useSideNavMediaClose } from "../hooks";
-import { Nav, NavLink, NavBtn, NavMenu, NavLogo } from "./styled/Navbar.styled";
+import {
+  Nav,
+  NavLink,
+  NavBtn,
+  NavMenu,
+  NavLogo,
+  NavLinks,
+} from "./styled/Navbar.styled";
 import { ReactComponent as Logo } from "../../icons/logo.svg";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { resume } from "../content";
@@ -89,37 +96,39 @@ const Navbar = ({ active, handleScroll }) => {
           ))}
         </TransitionGroup>
         <NavMenu>
-          <TransitionGroup component={null}>
-            {navItems.map((item, index) => (
-              <CSSTransition
-                key={item}
-                in={true}
-                nodeRef={nodes[index]}
-                appear={true}
-                timeout={600}
-                classNames={"fadeNav"}
-              >
-                <NavLink
+          <NavLinks>
+            <TransitionGroup component={null}>
+              {navItems.map((item, index) => (
+                <CSSTransition
                   key={item}
-                  ref={nodes[index]}
-                  active={item === active}
-                  onClick={() => handleScroll(item)}
-                  activeStyle
+                  in={true}
+                  nodeRef={nodes[index]}
+                  appear={true}
+                  timeout={600}
+                  classNames={"fadeNav"}
                 >
-                  {item}
-                </NavLink>
-              </CSSTransition>
-            ))}
-            <CSSTransition
-              in={true}
-              nodeRef={nodesMain[3]}
-              appear={true}
-              timeout={500}
-              classNames={"fadeLogo"}
-            >
-              <div ref={nodesMain[3]}>{navButton}</div>
-            </CSSTransition>
-          </TransitionGroup>
+                  <NavLink
+                    key={item}
+                    ref={nodes[index]}
+                    active={item === active}
+                    onClick={() => handleScroll(item)}
+                    activeStyle
+                  >
+                    {item}
+                  </NavLink>
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
+          </NavLinks>
+          <CSSTransition
+            in={true}
+            nodeRef={nodesMain[3]}
+            appear={true}
+            timeout={500}
+            classNames={"fadeLogo"}
+          >
+            <div ref={nodesMain[3]}>{navButton}</div>
+          </CSSTransition>
         </NavMenu>
       </Nav>
     </>

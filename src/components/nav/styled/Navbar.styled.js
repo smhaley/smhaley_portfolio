@@ -30,24 +30,19 @@ export const Nav = styled.nav`
 
 export const NavLink = styled.li`
   color: ${(props) => (props.active ? props.theme.green : props.theme.light)};
-  display: flex;
-  align-items: center;
+  display: inline-block;
   text-decoration: none;
   padding: 0 1rem;
-  height: 100%;
   cursor: pointer;
   font-size: 1em;
-
   &:hover {
     color: ${(props) => props.theme.lightGreen};
   }
-
   transition: 0.3s ease-in-out;
 `;
 
-export const NavMenu = styled.ul`
+export const NavMenu = styled.div`
   font-weight: 600;
-  display: none;
 
   @media screen and (min-width: ${(props) => props.theme.sm}) {
     align-items: center;
@@ -60,6 +55,8 @@ export const NavMenu = styled.ul`
   }
 `;
 
+export const NavLinks = styled.ul``;
+
 export const NavLogo = styled.div`
   color: ${(props) => props.theme.light};
   display: flex;
@@ -68,7 +65,6 @@ export const NavLogo = styled.div`
   padding-left: 2rem;
   height: 100%;
   font-size: 0.9em;
-
   &:hover {
     color: ${(props) => props.theme.lightGreen};
   }
