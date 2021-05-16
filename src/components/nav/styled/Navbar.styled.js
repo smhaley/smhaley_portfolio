@@ -82,3 +82,7 @@ export const NavLogo = styled.div`
 export const NavBtn = styled(Button)`
   margin: 2em;
 `;
+
+export const MenuContainer = styled.div`
+  height: 100%;
+`;

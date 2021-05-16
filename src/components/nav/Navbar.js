@@ -9,6 +9,7 @@ import {
   NavMenu,
   NavLogo,
   NavLinks,
+  MenuContainer,
 } from "./styled/Navbar.styled";
 import { ReactComponent as Logo } from "../../icons/logo.svg";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -56,10 +57,10 @@ const Navbar = ({ active, handleScroll }) => {
   );
 
   const burger = (
-    <div ref={node}>
+    <MenuContainer ref={node}>
       <Burger open={open} setOpen={setOpen} />
       <Menu open={open} setOpen={setOpen} handleMenuClick={handleMenuClick} />
-    </div>
+    </MenuContainer>
   );
 
   const navButton = (

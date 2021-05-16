@@ -1,9 +1,18 @@
 import styled from "styled-components";
 
+export const BurgerContainer = styled.div`
+  margin-right: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
 export const StyledBurger = styled.button`
-  position: relative;
-  top: 1.2rem;
-  right: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -15,10 +24,6 @@ export const StyledBurger = styled.button`
   padding: 0;
   z-index: 10;
   margin-right: 1rem;
-
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
 
   &:focus {
     outline: none;

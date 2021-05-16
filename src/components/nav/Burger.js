@@ -1,14 +1,20 @@
 import React from "react";
-import { StyledBurger } from "./styled/Burger.styled";
+import { StyledBurger, BurgerContainer } from "./styled/Burger.styled";
 import { bool, func } from "prop-types";
 
 const Burger = ({ open, setOpen }) => {
   return (
-    <StyledBurger aria-label = 'menu burger' open={open} onClick={() => setOpen(!open)}>
-      <div />
-      <div />
-      <div />
-    </StyledBurger>
+    <BurgerContainer>
+      <StyledBurger
+        aria-label="menu burger"
+        open={open}
+        onClick={() => setOpen(!open)}
+      >
+        <div />
+        <div />
+        <div />
+      </StyledBurger>
+    </BurgerContainer>
   );
 };
 
