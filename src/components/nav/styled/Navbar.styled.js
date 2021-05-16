@@ -43,6 +43,7 @@ export const NavLink = styled.li`
 
 export const NavMenu = styled.div`
   font-weight: 600;
+  display: none;
 
   @media screen and (min-width: ${(props) => props.theme.sm}) {
     align-items: center;
