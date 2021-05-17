@@ -41,6 +41,7 @@ export const FormGroup = styled.div`
 
   input,
   textarea {
+    font-family: inherit;
     padding: 0.8rem;
     font-size: 1rem;
     color: ${(props) => props.theme.veryDark};
