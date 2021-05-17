@@ -51,9 +51,7 @@ const Contact = ({ active }) => {
       .then((res) => {
         console.log("Email successfully sent!");
       })
-      .catch((err) =>
-        console.error(err)
-      );
+      .catch((err) => console.error(err));
   };
 
   const [view, setView] = useState(content[0]);
@@ -85,12 +83,17 @@ const Contact = ({ active }) => {
                 {view.id === "form" ? (
                   <SectionCard ref={formRef}>
                     <FormGroup>
-                      <p>Want to find out more? <span> Let's connect!</span></p>
-                      
+                      <p>
+                        Want to find out more? <span> Let's connect!</span>
+                      </p>
+
                       <form onSubmit={handleSubmit(onSubmit)}>
                         <InputDiv>
-                          <Label htmlFor= 'name' aria-label="Name">Name</Label>
-                          <input id='name'
+                          <Label htmlFor="name" aria-labelledby="Name">
+                            Name
+                          </Label>
+                          <input
+                            id="name"
                             {...register("name", {
                               required: "Name required!",
                             })}
@@ -100,12 +103,16 @@ const Contact = ({ active }) => {
                           )}
                         </InputDiv>
                         <InputDiv>
-                          <Label htmlFor='email' aria-label="Email">Email</Label>
-                          <input id='email'
+                          <Label htmlFor="email" aria-labelledby="Email">
+                            Email
+                          </Label>
+                          <input
+                            id="email"
                             {...register("email", {
                               required: "Email required!",
                               pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                value:
+                                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                 message: "Please check your email format!",
                               },
                             })}
@@ -115,9 +122,11 @@ const Contact = ({ active }) => {
                           )}
                         </InputDiv>
                         <InputDiv>
-                          <Label htmlFor='message' aria-label="Message">Message</Label>
+                          <Label htmlFor="message" aria-labelledby="Message">
+                            Message
+                          </Label>
                           <textarea
-                          id='message'
+                            id="message"
                             rows={6}
                             resize={"vertical"}
                             {...register("message", {

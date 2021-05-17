@@ -1,22 +1,59 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import App from "./App";
+import userEvent from "@testing-library/user-event";
 
-test("renders app", () => {
-  Object.defineProperty(window, "matchMedia", {
-    writable: true,
-    value: jest.fn().mockImplementation((query) => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(), // deprecated
-      removeListener: jest.fn(), // deprecated
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
-    })),
+describe("App tests", () => {
+  beforeEach(() => {
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: jest.fn().mockImplementation((query) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(), // deprecated
+        removeListener: jest.fn(), // deprecated
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    });
+    global.emailjs.send = jest.fn().mockImplementation(() => Promise.resolve());
+    render(<App />);
   });
-  render(<App />);
-  const main = screen.getByText(/shawn haley/i);
-  expect(main).toBeInTheDocument();
+
+  test("renders app", () => {
+    const main = screen.getByText(/shawn haley/i);
+    expect(main).toBeInTheDocument();
+  });
+
+  test("Correct form calls emailjs", async () => {
+    screen.getByLabelText("Name");
+    userEvent.type(screen.getByLabelText("Name"), "test");
+    expect(screen.getByLabelText("Name")).toHaveValue("test");
+    userEvent.type(screen.getByLabelText("Email"), "test@test.com");
+    expect(screen.getByLabelText("Email")).toHaveValue("test@test.com");
+    userEvent.type(screen.getByLabelText("Message"), "test message");
+    expect(screen.getByLabelText("Message")).toHaveValue("test message");
+    await act(async () => {
+      userEvent.click(screen.getByText("Send"));
+    });
+
+    expect(global.emailjs.send).toBeCalled();
+  });
+
+  test("Incorrect form does not call emailjs", async () => {
+    screen.getByLabelText("Name");
+    userEvent.type(screen.getByLabelText("Name"), "");
+    expect(screen.getByLabelText("Name")).toHaveValue("");
+    userEvent.type(screen.getByLabelText("Email"), "test@test.com");
+    expect(screen.getByLabelText("Email")).toHaveValue("test@test.com");
+    userEvent.type(screen.getByLabelText("Message"), "test message");
+    expect(screen.getByLabelText("Message")).toHaveValue("test message");
+    await act(async () => {
+      userEvent.click(screen.getByText("Send"));
+    });
+
+    expect(global.emailjs.send).not.toBeCalled();
+  });
 });
