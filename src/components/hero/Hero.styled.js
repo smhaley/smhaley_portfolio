@@ -1,21 +1,16 @@
 import styled from "styled-components";
 
-export const HeroContainer = styled.section`
+export const TextContainer = styled.section`
   display: flex;
-  padding-left: 20px;
   justify-content: center;
   flex-direction: column;
-  padding-top: 125px;
   transition: 0.1s ease-in-out;
+  margin-left: 5%;
 
-  @media screen and (min-width: ${(props) => props.theme.sm}) {
-    padding-left: 10%;
-    transition: 0.3s ease-in-out;
-  }
-
-  @media screen and (min-width: ${(props) => props.theme.md}) {
-    padding-left: 15%;
-    transition: 0.3s ease-in-out;
+  @media screen and (min-width: ${(props) => props.theme.xs}) {
+    padding-top: 125px;
+    transition: 0.1s ease-in-out;
+    margin-left: 0;
   }
 
   h4 {
@@ -45,4 +40,46 @@ export const HeroContainer = styled.section`
       transition: 0.3s linear;
     }
   }
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    border-radius: 7px;
+    width: 100%;
+    max-width: 200px;
+    min-width: 100px;
+    opacity: 0.7;
+    padding-top: 60px;
+    transition: opacity 0.3s ease-in-out;
+
+    @media screen and (min-width: ${(props) => props.theme.xs}) {
+      max-width: 350px;
+      padding-left: 15px;
+      padding-top: 100px;
+    }
+    @media screen and (min-width: ${(props) => props.theme.sm}) {
+      padding-left: 10px;
+    }
+  }
+  img:hover {
+    opacity: 1;
+  }
+`;
+
+export const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  @media screen and (min-width: ${(props) => props.theme.xs}) {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  @media screen and (min-width: ${(props) => props.theme.md}) {
+    padding-left: 5%;
+  }
+  transition: all 0.1s ease-in-out; ;
 `;
