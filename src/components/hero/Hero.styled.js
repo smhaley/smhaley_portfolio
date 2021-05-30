@@ -5,11 +5,12 @@ export const TextContainer = styled.section`
   justify-content: center;
   flex-direction: column;
   transition: 0.1s ease-in-out;
-  margin-left:5%;
+  margin-left: 5%;
 
   @media screen and (min-width: ${(props) => props.theme.xs}) {
     padding-top: 125px;
     transition: 0.1s ease-in-out;
+    margin-left: 0;
   }
 
   h4 {
@@ -42,7 +43,6 @@ export const TextContainer = styled.section`
 `;
 
 export const ImageContainer = styled.div`
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,13 @@ export const ImageContainer = styled.div`
 export const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   @media screen and (min-width: ${(props) => props.theme.xs}) {
     flex-direction: row-reverse;
+    justify-content: flex-end;
   }
+  @media screen and (min-width: ${(props) => props.theme.md}) {
+    padding-left: 5%;
+  }
+  transition: all 0.1s ease-in-out; ;
 `;
