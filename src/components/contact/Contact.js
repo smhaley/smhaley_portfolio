@@ -89,7 +89,7 @@ const Contact = ({ active }) => {
 
                       <form onSubmit={handleSubmit(onSubmit)}>
                         <InputDiv>
-                          <Label htmlFor="name" aria-labelledby="Name">
+                          <Label htmlFor="name" aria-labelledby="name">
                             Name
                           </Label>
                           <input
@@ -103,7 +103,7 @@ const Contact = ({ active }) => {
                           )}
                         </InputDiv>
                         <InputDiv>
-                          <Label htmlFor="email" aria-labelledby="Email">
+                          <Label htmlFor="email" aria-labelledby="email">
                             Email
                           </Label>
                           <input
@@ -122,7 +122,7 @@ const Contact = ({ active }) => {
                           )}
                         </InputDiv>
                         <InputDiv>
-                          <Label htmlFor="message" aria-labelledby="Message">
+                          <Label htmlFor="message" aria-labelledby="message">
                             Message
                           </Label>
                           <textarea

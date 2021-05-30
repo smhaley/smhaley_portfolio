@@ -101,7 +101,6 @@ export const ProjImg = styled.div`
   margin-top: -50px;
 }
   img {
-    background: linear-gradient(#e66465, #9198e5);
     height: 100%;
     border-radius: 7px;
     width: 100%;

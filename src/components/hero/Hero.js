@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import { HeroContainer } from "./Hero.styled";
+import { HeroContainer, ImageContainer, TextContainer } from "./Hero.styled";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Button } from "../../styles/common/Buttons";
+import avatar_sm from "../../pics/avatar_sm.png";
 
 const Hero = ({ handleContactScroll }) => {
   const [mount, setMount] = useState(false);
@@ -13,7 +14,8 @@ const Hero = ({ handleContactScroll }) => {
   const content = [one, two, three, five];
 
   const nodes = [useRef(null), useRef(null), useRef(null), useRef(null)];
-
+  const imgNode = useRef(null);
+  
   useEffect(() => {
     setTimeout(() => setMount(true), 300);
     return () => clearTimeout(setMount(true));
@@ -22,7 +24,20 @@ const Hero = ({ handleContactScroll }) => {
   return (
     <>
       <HeroContainer>
-        <div>
+        <CSSTransition
+          in={true}
+          nodeRef={imgNode}
+          appear={true}
+          timeout={500}
+          classNames={"fadeLogo"}
+        >
+          <ImageContainer>
+            <div ref={imgNode} style={{ transitionDelay: "650ms" }}>
+              <img src={avatar_sm} alt="avatar"></img>
+            </div>
+          </ImageContainer>
+        </CSSTransition>
+        <TextContainer>
           <TransitionGroup component={null}>
             {mount &&
               content.map((item, index) => (
@@ -42,7 +57,7 @@ const Hero = ({ handleContactScroll }) => {
                 </CSSTransition>
               ))}
           </TransitionGroup>
-        </div>
+        </TextContainer>
       </HeroContainer>
     </>
   );
