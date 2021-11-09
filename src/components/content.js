@@ -29,7 +29,7 @@ export const aboutContent = {
   overview:
     "Back end, front end, data engineering, machine learning. I'm a passionate developer in love with problem solving. My present interest is web and app development, but I'm always open to new problems.",
   current:
-    "Currently I am a software engineer with Cengage Group developing React web applications for k-12 education.",
+    "Currently I am a software engineer with Cengage developing React web applications for k-12 education.",
   github: "https://github.com/smhaley/",
   linkedIn: "https://www.linkedin.com/in/shawn-haley/",
 };

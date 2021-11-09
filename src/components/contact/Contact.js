@@ -98,9 +98,9 @@ const Contact = ({ active }) => {
                               required: "Name required!",
                             })}
                           />
-                          {errors.name && (
-                            <Message>{errors.name.message}</Message>
-                          )}
+                          <Message>
+                            {errors.name && errors.name.message}
+                          </Message>
                         </InputDiv>
                         <InputDiv>
                           <Label htmlFor="email" aria-labelledby="email">
@@ -117,9 +117,10 @@ const Contact = ({ active }) => {
                               },
                             })}
                           />
-                          {errors.email && (
-                            <Message>{errors.email.message}</Message>
-                          )}
+
+                          <Message>
+                            {errors.email && errors.email.message}
+                          </Message>
                         </InputDiv>
                         <InputDiv>
                           <Label htmlFor="message" aria-labelledby="message">
@@ -133,9 +134,9 @@ const Contact = ({ active }) => {
                               required: "Message Required!",
                             })}
                           ></textarea>
-                          {errors.message && (
-                            <Message>{errors.message.message}</Message>
-                          )}
+                          <Message>
+                            {errors.message && errors.message.message}
+                          </Message>
                         </InputDiv>
                         <Button type="submit" aria-label="send">
                           Send
