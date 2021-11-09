@@ -16,7 +16,10 @@ export const SectionCard = styled.div`
   width: 90%;
   border-radius: 3px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  padding: 10px;
+  @media screen and (min-width: ${(props) => props.theme.xxs}) {
+    padding: 20px;
+  }
   @media screen and (min-width: ${(props) => props.theme.sm}) {
     width: 70%;
   }
@@ -52,16 +55,11 @@ export const FormGroup = styled.div`
     display: block;
     margin-bottom: 0.5em;
 
-    &:focus {
-      transition: 0.2s ease-in-out;
-      outline: none !important;
-      border: 1px solid ${(props) => props.theme.green};
-      box-shadow: 0 0 4px #719ece;
-    }
+    &:focus,
     &:active {
+      padding: -3px;
       transition: 0.2s ease-in-out;
-      outline: none !important;
-      border: 1px solid ${(props) => props.theme.green};
+      outline: 3px solid ${(props) => props.theme.green};
       box-shadow: 0 0 4px #719ece;
     }
   }

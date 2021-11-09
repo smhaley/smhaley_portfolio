@@ -1,4 +1,6 @@
 export const theme = {
+  xxxs: '380px',
+  xxs: '440px',
   xs: "480px",
   sm: "768px",
   md: "992px",

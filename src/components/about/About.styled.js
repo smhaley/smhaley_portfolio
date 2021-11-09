@@ -45,15 +45,14 @@ export const AboutContent = styled.div`
 `;
 
 export const AboutStack = styled.ul`
-  margin-left: -28px;
-  -moz-column-count: 2;
-  -moz-column-gap: 20px;
-  -webkit-column-count: 2;
-  -webkit-column-gap: 20px;
-  column-count: 2;
-  column-gap: 20px;
+  @media screen and (min-width: ${(props) => props.theme.xxxs}) {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
 
   @media screen and (min-width: ${(props) => props.theme.sm}) {
+    margin-left: -10px;
     -moz-column-count: 3;
     -webkit-column-count: 3;
     column-count: 3;
@@ -73,16 +72,22 @@ export const Stack = styled.div`
   @media screen and (min-width: ${(props) => props.theme.lg}) {
     margin-top: -84px;
   }
+
   h5 {
     padding-left: 25px;
+  }
+  @media screen and (min-width: ${(props) => props.theme.xs}) {
+    h5 {
+      padding-left: 45px;
+    }
   }
 `;
 
 export const ListItem = styled.li`
   font-family: Consolas, monospace;
-  padding-left: 2ch;
   padding-top: 1ch;
   list-style-type: none;
+  left: 0;
 
   ::before {
     content: "⟡";
@@ -90,6 +95,28 @@ export const ListItem = styled.li`
     border-radius: 1ch;
     padding-inline: 1ch;
     margin-inline-end: 1ch;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.xxxs}) {
+    padding-left: 1.5ch;
+    ::before {
+      content: none;
+    }
+  }
+  @media screen and (min-width: ${(props) => props.theme.xxs}) {
+    padding-left: 3ch;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.xs}) {
+    padding-left: 2ch;
+
+    ::before {
+      content: "⟡";
+      color: ${(props) => props.theme.green};
+      border-radius: 1ch;
+      padding-inline: 1ch;
+      margin-inline-end: 1ch;
+    }
   }
 `;
 

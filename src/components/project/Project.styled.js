@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const ProjContainer = styled.section`
-  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -96,10 +95,9 @@ export const ProjImg = styled.div`
   max-width: 500px;
   margin-right: 0;
   margin-left: auto;
-  @media screen and (min-width: ${(props) =>
-        props.theme.xs}){
-  margin-top: -50px;
-}
+  @media screen and (min-width: ${(props) => props.theme.xs}) {
+    margin-top: -50px;
+  }
   img {
     height: 100%;
     border-radius: 7px;
@@ -110,7 +108,6 @@ export const ProjImg = styled.div`
         props.theme.xs}) and (max-width: ${(props) => props.theme.sm}) {
       opacity: 0.2;
     }
-    
   }
 
   @media screen and (min-width: ${(props) =>

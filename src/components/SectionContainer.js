@@ -4,6 +4,9 @@ import { useIntersectionObserver } from "./hooks";
 
 const SectionDiv = styled.div`
   min-height: 100vh;
+  .section-container {
+    padding-top: 35px;
+  }
 `;
 
 const SectionContainer = React.forwardRef((props, ref) => {
@@ -28,7 +31,9 @@ const SectionContainer = React.forwardRef((props, ref) => {
 
   return (
     <SectionDiv>
-      <div ref={node}>{children}</div>
+      <div className="section-container" ref={node}>
+        {children}
+      </div>
     </SectionDiv>
   );
 });
