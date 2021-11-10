@@ -15,8 +15,10 @@ const Menu = ({ open, handleMenuClick }) => {
   useLayoutEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
+      document.getElementById("app-root").style.filter = "blur(3px)";
     } else {
       document.body.style.overflow = "auto";
+      document.getElementById("app-root").style.filter = "none";
     }
   }, [open]);
 

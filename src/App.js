@@ -7,8 +7,7 @@ import SectionContainer from "./components/SectionContainer";
 import Contact from "./components/contact/Contact";
 import styled from "styled-components";
 import Footer from "./components/footer/Footer";
-import smoothscroll from 'smoothscroll-polyfill';
-
+import smoothscroll from "smoothscroll-polyfill";
 
 const AppBody = styled.div`
   position: relative;
@@ -25,7 +24,6 @@ const AppContainer = styled.section`
 `;
 
 function App() {
-  
   smoothscroll.polyfill();
 
   const [active, setActive] = useState();
@@ -71,24 +69,22 @@ function App() {
   ];
 
   return (
-    <>
-      <AppBody>
-        <Navbar active={active} handleScroll={handleScroll} />
-        <AppContainer>
-          {content.map((value) => (
-            <SectionContainer
-              activeHandler={activeHandler}
-              ref={value.ref}
-              index={value.id}
-              key={value.id}
-            >
-              {value.section}
-            </SectionContainer>
-          ))}
-        </AppContainer>
-        <Footer />
-      </AppBody>
-    </>
+    <AppBody>
+      <Navbar active={active} handleScroll={handleScroll} />
+      <AppContainer id="app-root">
+        {content.map((value) => (
+          <SectionContainer
+            activeHandler={activeHandler}
+            ref={value.ref}
+            index={value.id}
+            key={value.id}
+          >
+            {value.section}
+          </SectionContainer>
+        ))}
+      </AppContainer>
+      <Footer />
+    </AppBody>
   );
 }
 

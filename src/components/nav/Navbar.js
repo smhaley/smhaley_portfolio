@@ -17,6 +17,7 @@ import { resume } from "../content";
 
 const Navbar = ({ active, handleScroll }) => {
   const node = useRef();
+  const prevScrollY = useRef(0);
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("top");
@@ -25,8 +26,6 @@ const Navbar = ({ active, handleScroll }) => {
     setOpen(false);
     handleScroll(item);
   };
-
-  const prevScrollY = useRef(0);
 
   useOnClickOutside(node, () => setOpen(false));
   useSideNavMediaClose("768px", () => setOpen(false));
