@@ -44,6 +44,11 @@ export const FormGroup = styled.div`
 
   input,
   textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    appearance: none;
     font-family: inherit;
     padding: 0.8rem;
     font-size: 1rem;
@@ -56,12 +61,10 @@ export const FormGroup = styled.div`
     margin-bottom: 0.5em;
 
     &:focus,
-    &:active {
-      padding: -3px;
+    &:active { 
+      box-shadow: 0px 0px 5px 4px ${(props) => props.theme.green};
       transition: 0.2s ease-in-out;
-      outline: 3px solid ${(props) => props.theme.green};
-      box-shadow: 0 0 4px #719ece;
-    }
+     }
   }
 
   textarea {
