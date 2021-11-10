@@ -62,7 +62,7 @@ export const FormGroup = styled.div`
 
     &:focus,
     &:active { 
-      box-shadow: 0px 0px 5px 4px ${(props) => props.theme.green};
+      box-shadow: 0px 0px 3px 4px ${(props) => props.theme.green};
       transition: 0.2s ease-in-out;
      }
   }
