@@ -3,7 +3,7 @@ import { StyledMenu, MenuLink, MenuBtn } from "./styled/Menu.styled";
 import { bool } from "prop-types";
 import { resume } from "../content";
 
-const Menu = ({ open, handleMenuClick }) => {
+const Menu = ({ open, handleMenuClick, setMenuState }) => {
   const options = ["About", "Projects", "Contact"];
 
   const navButton = (
@@ -15,12 +15,12 @@ const Menu = ({ open, handleMenuClick }) => {
   useLayoutEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
-      document.getElementById("app-root").style.filter = "blur(3px)";
+      setMenuState(true);
     } else {
       document.body.style.overflow = "auto";
-      document.getElementById("app-root").style.filter = "none";
+      setMenuState(false);
     }
-  }, [open]);
+  }, [open, setMenuState]);
 
   return (
     <StyledMenu open={open}>

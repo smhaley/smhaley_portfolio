@@ -15,7 +15,7 @@ import { ReactComponent as Logo } from "../../icons/logo.svg";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { resume } from "../content";
 
-const Navbar = ({ active, handleScroll }) => {
+const Navbar = ({ active, handleScroll, setMenuState }) => {
   const node = useRef();
   const prevScrollY = useRef(0);
 
@@ -58,7 +58,12 @@ const Navbar = ({ active, handleScroll }) => {
   const burger = (
     <MenuContainer ref={node}>
       <Burger open={open} setOpen={setOpen} />
-      <Menu open={open} setOpen={setOpen} handleMenuClick={handleMenuClick} />
+      <Menu
+        open={open}
+        setOpen={setOpen}
+        handleMenuClick={handleMenuClick}
+        setMenuState={setMenuState}
+      />
     </MenuContainer>
   );
 

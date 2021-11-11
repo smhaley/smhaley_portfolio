@@ -66,6 +66,7 @@ export const NavLogo = styled.div`
   padding-left: 2rem;
   height: 100%;
   font-size: 0.9em;
+  cursor: default;
   &:hover {
     color: ${(props) => props.theme.lightGreen};
   }

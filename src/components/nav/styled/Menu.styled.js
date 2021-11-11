@@ -16,6 +16,7 @@ export const StyledMenu = styled.nav`
   transition: all 0.3s ease-in-out;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
   width: 60%;
+  z-index: 9;
 
   @media screen and (min-width: ${(props) => props.theme.xs}) {
     width: 40%;

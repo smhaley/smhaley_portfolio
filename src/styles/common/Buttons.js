@@ -9,6 +9,7 @@ export const Button = styled.button`
   border: 1px solid ${(props) => props.theme.green};
   border-radius: 3px;
   transition: 0.1s ease-in-out;
+  cursor: pointer;
   &:active {
     background-color: ${(props) => props.theme.hoverGreen};
   }
