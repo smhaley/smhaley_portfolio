@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as GitIcon } from "../../icons/github.svg";
 import { ReactComponent as LinkedIn } from "../../icons/linkedin.svg";
 import { ReactComponent as GitBranch } from "../../icons/git-branch.svg";
-import { aboutContent, siteLink } from "../content";
+import { GITHUB, LINKEDIN, SITELINK } from "../../constants/links";
 import { FooterDiv, FooterContent } from "./Footer.styled";
 
 const Footer = () => {
@@ -12,17 +12,17 @@ const Footer = () => {
     </h5>
   );
   const gh = (
-    <a href={aboutContent.linkedIn} target="_blank" rel="noreferrer">
+    <a href={LINKEDIN} target="_blank" rel="noreferrer">
       <LinkedIn />
     </a>
   );
   const linkedIn = (
-    <a href={aboutContent.github} target="_blank" rel="noreferrer">
+    <a href={GITHUB} target="_blank" rel="noreferrer">
       <GitIcon />
     </a>
   );
   const branch = (
-    <a href={siteLink} target="_blank" rel="noreferrer">
+    <a href={SITELINK} target="_blank" rel="noreferrer">
       <GitBranch />
     </a>
   );
