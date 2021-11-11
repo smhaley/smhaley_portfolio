@@ -1,13 +1,13 @@
 import React, { useLayoutEffect } from "react";
 import { StyledMenu, MenuLink, MenuBtn } from "./styled/Menu.styled";
 import { bool } from "prop-types";
-import { resume } from "../content";
+import { RESUME } from "../../constants/links";
 
 const Menu = ({ open, handleMenuClick, setMenuState }) => {
   const options = ["About", "Projects", "Contact"];
 
   const navButton = (
-    <a href={resume} target="_blank" rel="noreferrer">
+    <a href={RESUME} target="_blank" rel="noreferrer">
       <MenuBtn>Resume</MenuBtn>
     </a>
   );

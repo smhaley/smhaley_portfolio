@@ -13,7 +13,7 @@ import {
 } from "./styled/Navbar.styled";
 import { ReactComponent as Logo } from "../../icons/logo.svg";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { resume } from "../content";
+import {RESUME} from '../../constants/links'
 
 const Navbar = ({ active, handleScroll, setMenuState }) => {
   const node = useRef();
@@ -68,7 +68,7 @@ const Navbar = ({ active, handleScroll, setMenuState }) => {
   );
 
   const navButton = (
-    <a href={resume} target="_blank" rel="noreferrer">
+    <a href={RESUME} target="_blank" rel="noreferrer">
       <NavBtn>Resume</NavBtn>
     </a>
   );
