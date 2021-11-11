@@ -87,7 +87,6 @@ const App = () => {
         handleScroll={handleScroll}
         setMenuState={setMenuState}
       />
-
       <AppContainer menuState={menuState}>
         {content.map((value) => (
           <SectionContainer
