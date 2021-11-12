@@ -33,7 +33,7 @@ describe("App tests", () => {
     userEvent.type(screen.getByLabelText("Message"), "test message");
     
     await act(async () => {
-      userEvent.click(screen.getByText("Send"));
+      userEvent.click(screen.getByText("Send1"));
     });
 
     expect(global.emailjs.send).toBeCalled();
