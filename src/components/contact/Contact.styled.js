@@ -37,9 +37,8 @@ export const FormGroup = styled.div`
   flex-direction: column;
   max-width: 550px;
   margin: 20px auto;
-
   button {
-    max-width: 100px;
+    min-width: 110px;
   }
 
   input,
@@ -68,11 +67,12 @@ export const FormGroup = styled.div`
   }
 
   textarea {
-    width: 90%;
+    width: 85%;
     resize: vertical;
   }
 
   p {
+    padding-left: 5%;
     padding-bottom: 15px;
     font-size: 1.1em;
   }
@@ -81,6 +81,10 @@ export const FormGroup = styled.div`
     font-weight: 600;
     margin-left: 10px;
     color: ${(props) => props.theme.green};
+  }
+
+  form {
+    padding-left:5%;
   }
 `;
 
