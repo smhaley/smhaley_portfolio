@@ -5,7 +5,10 @@ export const TextContainer = styled.section`
   justify-content: center;
   flex-direction: column;
   transition: 0.1s ease-in-out;
-  margin-left: 5%;
+
+  @media screen and (min-width: ${(props) => props.theme.xxxs}) {
+    margin-left: 5%;
+  }
 
   @media screen and (min-width: ${(props) => props.theme.xs}) {
     padding-top: 125px;

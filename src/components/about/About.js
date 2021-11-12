@@ -3,7 +3,8 @@ import { CSSTransition } from "react-transition-group";
 import { ReactComponent as GitIcon } from "../../icons/github.svg";
 import { ReactComponent as LinkedIn } from "../../icons/linkedin.svg";
 import { Heading } from "../../styles/common/generic";
-import { aboutContent, resume } from "../content";
+import { aboutContent, aboutStack } from "./About.content";
+import {RESUME} from '../../constants/links'
 import {
   AboutContainer,
   SectionCard,
@@ -15,13 +16,15 @@ import {
 } from "./About.styled";
 
 const About = ({ active }) => {
+  
   const [show, setShow] = useState(false);
 
-  const one = "";
-  const two = <h1>{aboutContent.heading}</h1>;
-  const three = <p>{aboutContent.overview}</p>;
-  const four = <p>{aboutContent.current}</p>;
-  const five = (
+  const nodeRef = useRef(null);
+  
+  const one = <h1>{aboutContent.heading}</h1>;
+  const two = <p>{aboutContent.overview}</p>;
+  const three = <p>{aboutContent.current}</p>;
+  const four = (
     <div>
       <a href={aboutContent.linkedIn} target="_blank" rel="noreferrer">
         <LinkedIn />
@@ -31,30 +34,16 @@ const About = ({ active }) => {
       </a>
     </div>
   );
-  const six = (
-    <a href={resume} target="_blank" rel="noreferrer">
+  const five = (
+    <a href={RESUME} target="_blank" rel="noreferrer">
       <Link>Resume</Link>
     </a>
   );
 
-  const stackOne = [
-    "Javascript",
-    "Typescript",
-    "Python",
-    "React",
-    "Okta",
-    "SQL",
-    "Flask",
-    "Django",
-    "R",
-    "Docker",
-    "AWS",
-    "SAS",
-  ];
-  const content = [one, two, three, four, five, six];
+  const content = [one, two, three, four, five];
   const heading = <h5>Recent Technologies</h5>;
 
-  const nodeRef = useRef(null);
+  
 
   useEffect(() => {
     active && !show && setShow(true);
@@ -83,7 +72,7 @@ const About = ({ active }) => {
               <Stack>
                 {heading}
                 <AboutStack>
-                  {stackOne.map((item, key) => (
+                  {aboutStack.map((item, key) => (
                     <ListItem key={item}>{item}</ListItem>
                   ))}
                 </AboutStack>

@@ -28,13 +28,10 @@ describe("App tests", () => {
   });
 
   test("Correct form calls emailjs", async () => {
-    screen.getByLabelText("Name");
     userEvent.type(screen.getByLabelText("Name"), "test");
-    expect(screen.getByLabelText("Name")).toHaveValue("test");
     userEvent.type(screen.getByLabelText("Email"), "test@test.com");
-    expect(screen.getByLabelText("Email")).toHaveValue("test@test.com");
     userEvent.type(screen.getByLabelText("Message"), "test message");
-    expect(screen.getByLabelText("Message")).toHaveValue("test message");
+    
     await act(async () => {
       userEvent.click(screen.getByText("Send"));
     });
@@ -43,13 +40,9 @@ describe("App tests", () => {
   });
 
   test("Incorrect form does not call emailjs", async () => {
-    screen.getByLabelText("Name");
     userEvent.type(screen.getByLabelText("Name"), "");
-    expect(screen.getByLabelText("Name")).toHaveValue("");
     userEvent.type(screen.getByLabelText("Email"), "test@test.com");
-    expect(screen.getByLabelText("Email")).toHaveValue("test@test.com");
     userEvent.type(screen.getByLabelText("Message"), "test message");
-    expect(screen.getByLabelText("Message")).toHaveValue("test message");
     await act(async () => {
       userEvent.click(screen.getByText("Send"));
     });

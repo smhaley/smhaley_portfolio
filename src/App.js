@@ -7,8 +7,7 @@ import SectionContainer from "./components/SectionContainer";
 import Contact from "./components/contact/Contact";
 import styled from "styled-components";
 import Footer from "./components/footer/Footer";
-import smoothscroll from 'smoothscroll-polyfill';
-
+import smoothscroll from "smoothscroll-polyfill";
 
 const AppBody = styled.div`
   position: relative;
@@ -16,19 +15,30 @@ const AppBody = styled.div`
   overflow-x: auto;
 `;
 
-const AppContainer = styled.section`
+const AppContainer = styled.main`
   flex-direction: column;
   margin: 50px auto;
   max-width: 1200px;
   padding: 20px;
   display: flex;
+  transition: filter 0.3s ease-in-out;
+  ${({ menuState }) =>
+    menuState
+      ? `  
+  filter: blur(3px);
+  pointer-events: none;
+  `
+      : `
+  filter: blur(0);
+  pointer-events: default;  
+  `};
 `;
 
-function App() {
-  
+const App = () => {
   smoothscroll.polyfill();
 
   const [active, setActive] = useState();
+  const [menuState, setMenuState] = useState(false);
 
   const refs = {
     Hero: useRef(),
@@ -71,25 +81,27 @@ function App() {
   ];
 
   return (
-    <>
-      <AppBody>
-        <Navbar active={active} handleScroll={handleScroll} />
-        <AppContainer>
-          {content.map((value) => (
-            <SectionContainer
-              activeHandler={activeHandler}
-              ref={value.ref}
-              index={value.id}
-              key={value.id}
-            >
-              {value.section}
-            </SectionContainer>
-          ))}
-        </AppContainer>
-        <Footer />
-      </AppBody>
-    </>
+    <AppBody>
+      <Navbar
+        active={active}
+        handleScroll={handleScroll}
+        setMenuState={setMenuState}
+      />
+      <AppContainer menuState={menuState}>
+        {content.map((value) => (
+          <SectionContainer
+            activeHandler={activeHandler}
+            ref={value.ref}
+            index={value.id}
+            key={value.id}
+          >
+            {value.section}
+          </SectionContainer>
+        ))}
+      </AppContainer>
+      <Footer />
+    </AppBody>
   );
-}
+};
 
 export default App;

@@ -16,21 +16,16 @@ export const StyledMenu = styled.nav`
   transition: all 0.3s ease-in-out;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
   width: 60%;
+  z-index: 9;
 
   @media screen and (min-width: ${(props) => props.theme.xs}) {
     width: 40%;
   }
 
-  @media screen and (min-width: ${(props) => props.themesm}) {
+  @media screen and (min-width: ${(props) => props.theme.sm}) {
     transition: transform 0.3s ease-in-out;
     transform: translateX(100%);
   }
-
-  ${({ open }) =>
-    open &&
-    `box-shadow: 0 0 0 9999px rgba(0,0,0,0.5);
-       transition: all 0.3s ease-in-out;
-      `}
 
   a {
     font-size: 1.25rem;

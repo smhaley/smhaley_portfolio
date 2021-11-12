@@ -16,7 +16,10 @@ export const SectionCard = styled.div`
   width: 90%;
   border-radius: 3px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  padding: 10px;
+  @media screen and (min-width: ${(props) => props.theme.xxs}) {
+    padding: 20px;
+  }
   @media screen and (min-width: ${(props) => props.theme.sm}) {
     width: 70%;
   }
@@ -34,13 +37,17 @@ export const FormGroup = styled.div`
   flex-direction: column;
   max-width: 550px;
   margin: 20px auto;
-
   button {
-    max-width: 100px;
+    min-width: 110px;
   }
 
   input,
   textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    appearance: none;
     font-family: inherit;
     padding: 0.8rem;
     font-size: 1rem;
@@ -52,26 +59,20 @@ export const FormGroup = styled.div`
     display: block;
     margin-bottom: 0.5em;
 
-    &:focus {
+    &:focus,
+    &:active { 
+      box-shadow: 0px 0px 3px 4px ${(props) => props.theme.green};
       transition: 0.2s ease-in-out;
-      outline: none !important;
-      border: 1px solid ${(props) => props.theme.green};
-      box-shadow: 0 0 4px #719ece;
-    }
-    &:active {
-      transition: 0.2s ease-in-out;
-      outline: none !important;
-      border: 1px solid ${(props) => props.theme.green};
-      box-shadow: 0 0 4px #719ece;
-    }
+     }
   }
 
   textarea {
-    width: 90%;
+    width: 85%;
     resize: vertical;
   }
 
   p {
+    padding-left: 5%;
     padding-bottom: 15px;
     font-size: 1.1em;
   }
@@ -80,6 +81,10 @@ export const FormGroup = styled.div`
     font-weight: 600;
     margin-left: 10px;
     color: ${(props) => props.theme.green};
+  }
+
+  form {
+    padding-left:5%;
   }
 `;
 
