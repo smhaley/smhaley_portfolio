@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { Heading } from "../../styles/common/generic";
 import { Button } from "../../styles/common/Buttons";
+import { serviceId, templateId } from "../../constants/emailKeys";
 import {
   ContactContainer,
   ThanksDiv,
@@ -24,9 +25,6 @@ const Contact = ({ active }) => {
     { id: "form", ref: formRef },
     { id: "thanks", ref: thanksRef },
   ];
-
-  const serviceId = "service_znvjccb";
-  const templateId = "template_55u84ye";
 
   const [show, setShow] = useState(false);
 

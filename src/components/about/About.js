@@ -16,8 +16,11 @@ import {
 } from "./About.styled";
 
 const About = ({ active }) => {
+  
   const [show, setShow] = useState(false);
 
+  const nodeRef = useRef(null);
+  
   const one = <h1>{aboutContent.heading}</h1>;
   const two = <p>{aboutContent.overview}</p>;
   const three = <p>{aboutContent.current}</p>;
@@ -40,7 +43,7 @@ const About = ({ active }) => {
   const content = [one, two, three, four, five];
   const heading = <h5>Recent Technologies</h5>;
 
-  const nodeRef = useRef(null);
+  
 
   useEffect(() => {
     active && !show && setShow(true);
