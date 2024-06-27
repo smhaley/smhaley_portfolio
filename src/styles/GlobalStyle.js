@@ -6,7 +6,6 @@ export const GlobalStyle = createGlobalStyle`
   --font-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
   scrollbar-color: ${(props) => props.theme.green} rgb(46,54,69);
-  scrollbar-width: thin;
 }
 
 body {
@@ -21,7 +20,7 @@ body {
   color: ${(props) => props.theme.white};
   font-family: "Helvetica", "Calibre", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;;
+    sans-serif;
   line-height: 1.3;
   
 
