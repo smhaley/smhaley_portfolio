@@ -1,11 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import pep from "../../pics/pep.png";
 import tab from "../../pics/tab.png";
 import Project from "./Project";
-import { pepContent, tabContent } from "./Project.content";
+import {  tabContent } from "./Project.content";
 import { Heading } from "../../styles/common/generic";
-import { ProjContainer, Stack } from "./Project.styled";
+import { ProjContainer } from "./Project.styled";
 
 const ProjectContainer = ({ active }) => {
   const [show, setShow] = useState(false);
@@ -30,10 +29,7 @@ const ProjectContainer = ({ active }) => {
               <h3>{`<RecentProjects/>`}</h3>
             </Heading>
 
-            <Project content={pepContent} image={pep} />
-            <Stack>
-              <Project content={tabContent} image={tab} />
-            </Stack>
+            <Project content={tabContent} image={tab} />
           </ProjContainer>
         </div>
       </CSSTransition>

@@ -8,7 +8,7 @@ const Hero = ({ handleContactScroll }) => {
   const [mount, setMount] = useState(false);
   const one = <h4>Hey, I'm</h4>;
   const two = <h1>Shawn Haley.</h1>;
-  const three = <h3>Full stack data engineer.</h3>;
+  const three = <h3>Senior Software Engineer</h3>;
   const five = <Button onClick={handleContactScroll}>Get In Touch</Button>;
 
   const content = [one, two, three, five];

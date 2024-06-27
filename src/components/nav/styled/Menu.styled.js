@@ -4,11 +4,10 @@ import { Button } from "../../../styles/common/Buttons";
 export const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background: ${(props) => props.theme.teal};
   height: 100vh;
-  padding: 2rem;
+  overflow: auto;
   position: absolute;
   top: 0;
   right: 0;
